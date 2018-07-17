@@ -14,6 +14,8 @@
 		CF8AAFBD20FE87D80081EB58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFBC20FE87D80081EB58 /* Assets.xcassets */; };
 		CF8AAFC020FE87D80081EB58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFBE20FE87D80081EB58 /* LaunchScreen.storyboard */; };
 		CF8AAFC920FE98520081EB58 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFC720FE98520081EB58 /* Explore.storyboard */; };
+		CF8AAFCB20FE9E770081EB58 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */; };
+		CF8AAFCF20FE9FBE0081EB58 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CF8AAFBF20FE87D80081EB58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8AAFC120FE87D80081EB58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8AAFC820FE98520081EB58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Explore.storyboard; sourceTree = "<group>"; };
+		CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
+		CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +62,11 @@
 		CF8AAFB120FE87D70081EB58 /* GeoPic */ = {
 			isa = PBXGroup;
 			children = (
+				CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */,
 				CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */,
 				CF8AAFB420FE87D70081EB58 /* ViewController.swift */,
 				CF8AAFB620FE87D70081EB58 /* Main.storyboard */,
+				CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */,
 				CF8AAFC720FE98520081EB58 /* Explore.storyboard */,
 				CF8AAFBC20FE87D80081EB58 /* Assets.xcassets */,
 				CF8AAFBE20FE87D80081EB58 /* LaunchScreen.storyboard */,
@@ -142,7 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8AAFCB20FE9E770081EB58 /* PictureCell.swift in Sources */,
 				CF8AAFB520FE87D70081EB58 /* ViewController.swift in Sources */,
+				CF8AAFCF20FE9FBE0081EB58 /* ExploreVC.swift in Sources */,
 				CF8AAFBB20FE87D70081EB58 /* GeoPic.xcdatamodeld in Sources */,
 				CF8AAFB320FE87D70081EB58 /* AppDelegate.swift in Sources */,
 			);

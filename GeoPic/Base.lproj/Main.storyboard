@@ -41,6 +41,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="SpS-lW-emR" kind="presentation" id="ao5-Hu-odG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6js-8P-laF">
                                 <rect key="frame" x="70" y="523" width="235" height="45"/>
@@ -90,6 +93,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Explore-->
+        <scene sceneID="3JB-zE-iqL">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Explore" id="SpS-lW-emR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0lo-YY-cwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826" y="327"/>
         </scene>
     </scenes>
     <resources>
