@@ -13,6 +13,7 @@
 		CF8AAFBB20FE87D70081EB58 /* GeoPic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFB920FE87D70081EB58 /* GeoPic.xcdatamodeld */; };
 		CF8AAFBD20FE87D80081EB58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFBC20FE87D80081EB58 /* Assets.xcassets */; };
 		CF8AAFC020FE87D80081EB58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFBE20FE87D80081EB58 /* LaunchScreen.storyboard */; };
+		CF8AAFC920FE98520081EB58 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFC720FE98520081EB58 /* Explore.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CF8AAFBC20FE87D80081EB58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8AAFBF20FE87D80081EB58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8AAFC120FE87D80081EB58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8AAFC820FE98520081EB58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Explore.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */,
 				CF8AAFB420FE87D70081EB58 /* ViewController.swift */,
 				CF8AAFB620FE87D70081EB58 /* Main.storyboard */,
+				CF8AAFC720FE98520081EB58 /* Explore.storyboard */,
 				CF8AAFBC20FE87D80081EB58 /* Assets.xcassets */,
 				CF8AAFBE20FE87D80081EB58 /* LaunchScreen.storyboard */,
 				CF8AAFC120FE87D80081EB58 /* Info.plist */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8AAFC920FE98520081EB58 /* Explore.storyboard in Resources */,
 				CF8AAFC020FE87D80081EB58 /* LaunchScreen.storyboard in Resources */,
 				CF8AAFBD20FE87D80081EB58 /* Assets.xcassets in Resources */,
 				CF8AAFB820FE87D70081EB58 /* Main.storyboard in Resources */,
@@ -161,6 +165,14 @@
 				CF8AAFBF20FE87D80081EB58 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CF8AAFC720FE98520081EB58 /* Explore.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF8AAFC820FE98520081EB58 /* Base */,
+			);
+			name = Explore.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
