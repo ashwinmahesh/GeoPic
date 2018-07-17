@@ -19,4 +19,10 @@ def processLogin(request):
     if bcrypt.checkpw(user.password.encode(), request.POST['password'].encode()):
         return JsonResponse('Successful Login')
     return JsonResponse('Invalid login')
+
+@csrf_exempt
+def processRegister(request):
+    if request.method!='POST':
+        print('Someone is not posting for register')
+        return HttpResponse('You are not posting')
 # Create your views here.
