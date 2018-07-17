@@ -25,6 +25,7 @@ def processRegister(request):
     if request.method!='POST':
         print('Someone is not posting for register')
         return HttpResponse('You are not posting')
+    print(request.POST)
     first_name=request.POST['first_name']
     last_name=request.POST['last_name']
     username=request.POST['username']
