@@ -25,4 +25,13 @@ def processRegister(request):
     if request.method!='POST':
         print('Someone is not posting for register')
         return HttpResponse('You are not posting')
+    first_name=request.POST['first_name']
+    last_name=request.POST['last_name']
+    username=request.POST['username']
+    password=request.POST['password']
+    if len(User.objects.filter(username=username))>0:
+        return JsonResponse('Username already exists')
+    hashedPW=bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    User.objects.create(first_name=first_name, last_name=last_name, username=username, password=hashedPW)
+    return JsonResponse('User successfully created')
 # Create your views here.
