@@ -13,9 +13,13 @@ class ExploreVC: UIViewController {
                                    "address":"1920 Zanker Rd, San Jose, CA 95112"
         ]]
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBAction func searchPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ExploreToSearchSegue", sender: "Explore")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        tableData.append(newDict)
         tableView.delegate=self
         tableView.dataSource=self
@@ -36,7 +40,6 @@ extension ExploreVC:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell", for: indexPath) as! PictureCell
         let currentPost = tableData[indexPath.row]
-        print(currentPost["description"] as! String)
         cell.nameLabel.text=currentPost["name"] as! String
         cell.addressLabel.text=currentPost["address"] as! String
         cell.descriptionView.text=currentPost["description"] as! String

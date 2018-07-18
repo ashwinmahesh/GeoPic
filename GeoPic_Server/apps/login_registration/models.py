@@ -11,8 +11,9 @@ class User(models.Model):
 class Post(models.Model):
     image_path = models.CharField(max_length=255)
     poster = models.ForeignKey(User, related_name='posts')
-    latitude = models.DecimalField(decimal_places=15, max_digits=18)
-    longtitude = models.DecimalField(decimal_places=15, max_digits=18)
+    latitude = models.CharField(max_length=60)
+    longitude = models.CharField(max_length=60)
+    location = models.CharField(max_length=255)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
