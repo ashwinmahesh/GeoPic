@@ -9,7 +9,7 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Post(models.Model):
-    image_path = models.CharField(max_length=255)
+    image_data = models.TextField()
     poster = models.ForeignKey(User, related_name='posts')
     latitude = models.CharField(max_length=60)
     longitude = models.CharField(max_length=60)

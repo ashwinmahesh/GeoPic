@@ -17,6 +17,7 @@
 		CF8AAFCB20FE9E770081EB58 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */; };
 		CF8AAFCF20FE9FBE0081EB58 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */; };
 		CF8AAFD120FED0D10081EB58 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFD020FED0D10081EB58 /* SearchVC.swift */; };
+		CF8AAFD320FED2530081EB58 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFD220FED2530081EB58 /* SearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		CF8AAFD020FED0D10081EB58 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		CF8AAFD220FED2530081EB58 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		CF8AAFB120FE87D70081EB58 /* GeoPic */ = {
 			isa = PBXGroup;
 			children = (
+				CF8AAFD220FED2530081EB58 /* SearchCell.swift */,
 				CF8AAFCE20FE9FBE0081EB58 /* ExploreVC.swift */,
 				CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */,
 				CF8AAFB420FE87D70081EB58 /* ViewController.swift */,
@@ -154,6 +157,7 @@
 				CF8AAFD120FED0D10081EB58 /* SearchVC.swift in Sources */,
 				CF8AAFCB20FE9E770081EB58 /* PictureCell.swift in Sources */,
 				CF8AAFB520FE87D70081EB58 /* ViewController.swift in Sources */,
+				CF8AAFD320FED2530081EB58 /* SearchCell.swift in Sources */,
 				CF8AAFCF20FE9FBE0081EB58 /* ExploreVC.swift in Sources */,
 				CF8AAFBB20FE87D70081EB58 /* GeoPic.xcdatamodeld in Sources */,
 				CF8AAFB320FE87D70081EB58 /* AppDelegate.swift in Sources */,

@@ -176,6 +176,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textEntered:" destination="Sc5-Bc-mpk" eventType="editingDidEnd" id="ECA-Wo-Pai"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3iD-pD-uOD">
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
@@ -216,20 +219,38 @@
                                 <rect key="frame" x="0.0" y="124" width="414" height="552"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NXG-oA-vDI">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="165" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OW7-u2-xBP">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchCell" id="OW7-u2-xBP" customClass="SearchCell" customModule="GeoPic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="165" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-5P-sKF">
+                                                    <rect key="frame" x="8" y="8" width="149" height="134"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="buttonPushed:" destination="OW7-u2-xBP" eventType="touchUpInside" id="2gf-Fk-BtM"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="dNO-5P-sKF" secondAttribute="bottom" id="3s0-Hd-lh8"/>
+                                            <constraint firstItem="dNO-5P-sKF" firstAttribute="top" secondItem="OW7-u2-xBP" secondAttribute="topMargin" id="Nt4-UJ-ba6"/>
+                                            <constraint firstItem="dNO-5P-sKF" firstAttribute="leading" secondItem="OW7-u2-xBP" secondAttribute="leadingMargin" id="u9U-1d-1Fl"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="dNO-5P-sKF" secondAttribute="trailing" id="ytW-Sn-G4t"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageButton" destination="dNO-5P-sKF" id="uLu-Ax-2th"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -253,6 +274,8 @@
                         <viewLayoutGuide key="safeArea" id="knp-uV-qDD"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="rKv-IV-rv7" id="9By-WF-tMG"/>
+                        <outlet property="textField" destination="4N4-nS-7h3" id="v08-b5-oPl"/>
                         <segue destination="i9c-re-GV2" kind="presentation" identifier="SearchToExploreSegue" animates="NO" id="U0E-on-2VW"/>
                     </connections>
                 </viewController>

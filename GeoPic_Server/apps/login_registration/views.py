@@ -23,8 +23,9 @@ def processLogin(request):
         return JsonResponse({'response':'Username does not exist in database'})
     
     user = User.objects.get(username=username)
-    if bcrypt.checkpw(user.password.encode(), request.POST['password'].encode()):
-        response = {'response':'Successful Login'}
+    # if bcrypt.checkpw(user.password.encode(), str(request.POST['password']).encode()):
+    if request.POST['password']==user.password:
+        response = {'response':'Successful Login', 'first_name':user.first_name, 'last_name':user.last_name, 'username':user.username}
         return JsonResponse(response)
     response = {'response':'Invalid Login'}
     return JsonResponse(response)
@@ -41,7 +42,17 @@ def processRegister(request):
     password=request.POST['password']
     if len(User.objects.filter(username=username))>0:
         return JsonResponse({'response':'Username already exists'})
-    hashedPW=bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-    User.objects.create(first_name=first_name, last_name=last_name, username=username, password=hashedPW)
+    # hashedPW=bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    print(first_name, last_name, username, password)
+    User.objects.create(first_name=first_name, last_name=last_name, username=username, password=password)
     return JsonResponse({'response':'User successfully created'})
 # Create your views here.
+
+@csrf_exempt
+def getRecentPosts(request):
+    posts = Post.objects.all().order_by('-created_at')[0:20].values()
+    data={
+        'posts':list(posts)
+    }
+    return JsonResponse(data)
+
