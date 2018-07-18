@@ -29,9 +29,11 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         addressLabel.text=""
         manager.delegate = self
+        mapView.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        placePhotos()
         // Do any additional setup after loading the view.
     }
 
@@ -40,13 +42,20 @@ class MapVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func placePhotos(){
+        let annotation=MKPointAnnotation()
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37535889999999, -121.91019770000003)
+        annotation.coordinate = location
+        annotation.title = "Michael Choi"
+        annotation.subtitle = "Posted on 7/16/18"
+        mapView.addAnnotation(annotation)
+    }
 }
 extension MapVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.001, 0.001)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.005, 0.005)
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
@@ -59,7 +68,8 @@ extension MapVC:CLLocationManagerDelegate{
         CLGeocoder().reverseGeocodeLocation(location){
             placemark, error in
             if error != nil{
-                print(error)
+                self.addressLabel.text=""
+//                print(error)
             }
             else{
                 if let place = placemark?[0]{
@@ -69,5 +79,11 @@ extension MapVC:CLLocationManagerDelegate{
                 }
             }
         }
+    }
+    
+}
+extension MapVC:MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("You selected a point")
     }
 }
