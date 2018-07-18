@@ -10,6 +10,8 @@
 		CF228C9420FFA1060047D333 /* SinglePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9320FFA1060047D333 /* SinglePostVC.swift */; };
 		CF228C9720FFAE020047D333 /* UserLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9520FFAE010047D333 /* UserLog.swift */; };
 		CF228C9820FFAE020047D333 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9620FFAE010047D333 /* RegistrationViewController.swift */; };
+		CF228C9A20FFB4430047D333 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9920FFB4430047D333 /* ImageVC.swift */; };
+		CF228C9D20FFB44C0047D333 /* Upload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF228C9B20FFB44C0047D333 /* Upload.storyboard */; };
 		CF8AAFB320FE87D70081EB58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */; };
 		CF8AAFB520FE87D70081EB58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFB420FE87D70081EB58 /* ViewController.swift */; };
 		CF8AAFB820FE87D70081EB58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFB620FE87D70081EB58 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		CF228C9320FFA1060047D333 /* SinglePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostVC.swift; sourceTree = "<group>"; };
 		CF228C9520FFAE010047D333 /* UserLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLog.swift; sourceTree = "<group>"; };
 		CF228C9620FFAE010047D333 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		CF228C9920FFB4430047D333 /* ImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
+		CF228C9C20FFB44C0047D333 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Upload.storyboard; sourceTree = "<group>"; };
 		CF8AAFAF20FE87D70081EB58 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8AAFB420FE87D70081EB58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				CF228C9620FFAE010047D333 /* RegistrationViewController.swift */,
 				CF228C9520FFAE010047D333 /* UserLog.swift */,
 				CF8AAFB620FE87D70081EB58 /* Main.storyboard */,
+				CF228C9B20FFB44C0047D333 /* Upload.storyboard */,
+				CF228C9920FFB4430047D333 /* ImageVC.swift */,
 				CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */,
 				CF8AAFC720FE98520081EB58 /* Explore.storyboard */,
 				CF8AAFD020FED0D10081EB58 /* SearchVC.swift */,
@@ -164,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF228C9D20FFB44C0047D333 /* Upload.storyboard in Resources */,
 				CF8AAFC920FE98520081EB58 /* Explore.storyboard in Resources */,
 				CF8AAFC020FE87D80081EB58 /* LaunchScreen.storyboard in Resources */,
 				CF8AAFBD20FE87D80081EB58 /* Assets.xcassets in Resources */,
@@ -186,6 +193,7 @@
 				CF8AAFB520FE87D70081EB58 /* ViewController.swift in Sources */,
 				CF8AAFD320FED2530081EB58 /* SearchCell.swift in Sources */,
 				CF8AAFCF20FE9FBE0081EB58 /* ExploreVC.swift in Sources */,
+				CF228C9A20FFB4430047D333 /* ImageVC.swift in Sources */,
 				CF8AAFD920FEE2BD0081EB58 /* MapVC.swift in Sources */,
 				CF8AAFBB20FE87D70081EB58 /* GeoPic.xcdatamodeld in Sources */,
 				CF8AAFB320FE87D70081EB58 /* AppDelegate.swift in Sources */,
@@ -195,6 +203,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		CF228C9B20FFB44C0047D333 /* Upload.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF228C9C20FFB44C0047D333 /* Base */,
+			);
+			name = Upload.storyboard;
+			sourceTree = "<group>";
+		};
 		CF8AAFB620FE87D70081EB58 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -68,3 +68,23 @@ def getPost(request):
     post = Post.objects.get(id=post_id)
     response = {'poster':post.poster, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description}
     return JsonResponse(response)
+
+def uploadFile(request):
+    return render(request, 'login_registration/upload.html')
+
+@csrf_exempt
+def processUpload(request):
+    print(request.POST)
+    print(request.FILES)
+    print("Your form is valid")
+    with open('Files/image.png', 'wb+') as destination:
+        for chunk in request.FILES['file'].chunks():
+            destination.write(chunk)
+    return redirect('/uploadFile/')
+
+@csrf_exempt
+def uploadImage(request):
+    if request.method!='POST':
+        return HttpResponse('You are not posting')
+    print(request.POST)
+    return JsonResponse({'response':'upload recieved'})

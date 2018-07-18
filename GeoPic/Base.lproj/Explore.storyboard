@@ -96,6 +96,9 @@
                                         <rect key="frame" x="104" y="0.0" width="102" height="60"/>
                                         <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="Plus"/>
+                                        <connections>
+                                            <action selector="uploadPushed:" destination="i9c-re-GV2" eventType="touchUpInside" id="v54-Wj-X7X"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujc-M9-GVO">
                                         <rect key="frame" x="208" y="0.0" width="102" height="60"/>
@@ -151,11 +154,20 @@
                         <outlet property="tableView" destination="0vj-1N-aqO" id="ZDu-rY-lDB"/>
                         <segue destination="Sc5-Bc-mpk" kind="presentation" identifier="ExploreToSearchSegue" animates="NO" id="Njv-wB-00s"/>
                         <segue destination="bdG-4M-VxC" kind="presentation" identifier="ExploreToMapSegue" animates="NO" id="zDD-ME-OJY"/>
+                        <segue destination="dQ1-ni-SQO" kind="presentation" identifier="ExploreToUploadSegue" id="jR7-Sa-KZX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-5m-WVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="728.98550724637687" y="150"/>
+        </scene>
+        <!--Upload-->
+        <scene sceneID="nfp-N6-Fnv">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Upload" storyboardName="Upload" id="dQ1-ni-SQO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ov9-JH-fKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="704"/>
         </scene>
         <!--SearchVC-->
         <scene sceneID="7Eg-g7-Z1n">

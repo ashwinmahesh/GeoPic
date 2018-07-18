@@ -21,6 +21,11 @@ class ExploreVC: UIViewController {
     @IBAction func searchPushed(_ sender: UIButton) {
         performSegue(withIdentifier: "ExploreToSearchSegue", sender: "Explore")
     }
+    
+    @IBAction func uploadPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ExploreToUploadSegue", sender: "ExploreToUpload")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        tableData.append(newDict)
