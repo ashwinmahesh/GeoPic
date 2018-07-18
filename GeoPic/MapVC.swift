@@ -63,7 +63,7 @@ extension MapVC:CLLocationManagerDelegate{
             }
             else{
                 if let place = placemark?[0]{
-                    if let check = place.subThoroughfare{
+                    if let check = place.thoroughfare{
                         self.addressLabel.text = "\(place.subThoroughfare!) \(place.thoroughfare!), \(place.locality!), \(place.administrativeArea!) \(place.postalCode!)"
                     }
                 }
