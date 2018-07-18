@@ -14,6 +14,9 @@ class ExploreVC: UIViewController {
         ]]
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func mapPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ExploreToMapSegue", sender: "ExploreToMap")
+    }
     
     @IBAction func searchPushed(_ sender: UIButton) {
         performSegue(withIdentifier: "ExploreToSearchSegue", sender: "Explore")

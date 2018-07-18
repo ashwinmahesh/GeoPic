@@ -111,6 +111,9 @@
                                         <rect key="frame" x="312" y="0.0" width="102" height="60"/>
                                         <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="location small"/>
+                                        <connections>
+                                            <action selector="mapPushed:" destination="i9c-re-GV2" eventType="touchUpInside" id="cWy-VF-NC8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,6 +150,7 @@
                     <connections>
                         <outlet property="tableView" destination="0vj-1N-aqO" id="ZDu-rY-lDB"/>
                         <segue destination="Sc5-Bc-mpk" kind="presentation" identifier="ExploreToSearchSegue" animates="NO" id="Njv-wB-00s"/>
+                        <segue destination="bdG-4M-VxC" kind="presentation" identifier="ExploreToMapSegue" animates="NO" id="zDD-ME-OJY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-5m-WVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,6 +212,9 @@
                                         <rect key="frame" x="312" y="0.0" width="102" height="60"/>
                                         <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="location small"/>
+                                        <connections>
+                                            <action selector="mapPushed:" destination="Sc5-Bc-mpk" eventType="touchUpInside" id="fbY-Wv-VhP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -277,11 +284,98 @@
                         <outlet property="collectionView" destination="rKv-IV-rv7" id="9By-WF-tMG"/>
                         <outlet property="textField" destination="4N4-nS-7h3" id="v08-b5-oPl"/>
                         <segue destination="i9c-re-GV2" kind="presentation" identifier="SearchToExploreSegue" animates="NO" id="U0E-on-2VW"/>
+                        <segue destination="bdG-4M-VxC" kind="presentation" identifier="SearchToMapSegue" animates="NO" id="RXb-ee-cTX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9K-uR-TJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1631.8840579710147" y="150"/>
+        </scene>
+        <!--MapVC-->
+        <scene sceneID="93A-ww-9Gh">
+            <objects>
+                <viewController id="bdG-4M-VxC" customClass="MapVC" customModule="GeoPic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zIN-G7-AdH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moU-RS-gu9">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="GeoPic" id="DAg-0e-tfc"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="BoW-OO-8h5">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEQ-jF-F4U">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="60"/>
+                                        <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="HOME"/>
+                                        <connections>
+                                            <action selector="homePushed:" destination="bdG-4M-VxC" eventType="touchUpInside" id="ZuD-bE-Uji"/>
+                                            <action selector="homePushed:" destination="Sc5-Bc-mpk" eventType="touchUpInside" id="nmk-2h-2Ue"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu8-Pa-9xl">
+                                        <rect key="frame" x="104" y="0.0" width="102" height="60"/>
+                                        <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="Plus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0R-X8-sgc">
+                                        <rect key="frame" x="208" y="0.0" width="102" height="60"/>
+                                        <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="magnifying glass">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchPushed:" destination="bdG-4M-VxC" eventType="touchUpInside" id="bF8-rG-V1x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-Xd-zcx">
+                                        <rect key="frame" x="312" y="0.0" width="102" height="60"/>
+                                        <color key="backgroundColor" red="0.75150227469999997" green="0.75150227469999997" blue="0.75150227469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="location small"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RFC-jB-jEa"/>
+                                </constraints>
+                            </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iSc-vE-oNu">
+                                <rect key="frame" x="0.0" y="64" width="414" height="612"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="D14-gB-6Ix" firstAttribute="bottom" secondItem="BoW-OO-8h5" secondAttribute="bottom" id="8mg-2t-3DF"/>
+                            <constraint firstItem="D14-gB-6Ix" firstAttribute="trailing" secondItem="BoW-OO-8h5" secondAttribute="trailing" id="No9-IT-RiI"/>
+                            <constraint firstItem="moU-RS-gu9" firstAttribute="top" secondItem="D14-gB-6Ix" secondAttribute="top" id="SWS-br-8eI"/>
+                            <constraint firstItem="BoW-OO-8h5" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" id="WP3-3W-OjN"/>
+                            <constraint firstItem="BoW-OO-8h5" firstAttribute="top" secondItem="iSc-vE-oNu" secondAttribute="bottom" id="fAu-US-AvE"/>
+                            <constraint firstItem="D14-gB-6Ix" firstAttribute="trailing" secondItem="iSc-vE-oNu" secondAttribute="trailing" id="j1L-Au-m9g"/>
+                            <constraint firstItem="iSc-vE-oNu" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" id="kkV-Qg-J3X"/>
+                            <constraint firstItem="iSc-vE-oNu" firstAttribute="top" secondItem="moU-RS-gu9" secondAttribute="bottom" id="oIa-Mw-Nud"/>
+                            <constraint firstItem="moU-RS-gu9" firstAttribute="trailing" secondItem="D14-gB-6Ix" secondAttribute="trailing" id="uIY-dJ-k4e"/>
+                            <constraint firstItem="moU-RS-gu9" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" id="yOh-Dt-Y1M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D14-gB-6Ix"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="iSc-vE-oNu" id="erV-dP-ks3"/>
+                        <segue destination="i9c-re-GV2" kind="presentation" identifier="MapToExploreSegue" animates="NO" id="hZ1-KV-aCX"/>
+                        <segue destination="Sc5-Bc-mpk" kind="presentation" identifier="MapToSearchSegue" animates="NO" id="UfP-qf-bHC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sek-i7-wCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2559" y="142"/>
         </scene>
     </scenes>
     <resources>
@@ -289,4 +383,9 @@
         <image name="location small" width="32" height="32"/>
         <image name="magnifying glass" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zDD-ME-OJY"/>
+        <segue reference="UfP-qf-bHC"/>
+        <segue reference="hZ1-KV-aCX"/>
+    </inferredMetricsTieBreakers>
 </document>

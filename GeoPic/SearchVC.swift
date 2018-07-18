@@ -19,6 +19,9 @@ class SearchVC: UIViewController {
     @IBAction func textEntered(_ sender: UITextField) {
         
     }
+    @IBAction func mapPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "SearchToMapSegue", sender: "SearchToMap")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
