@@ -22,6 +22,13 @@ class MapVC: UIViewController {
         performSegue(withIdentifier: "MapToSearchSegue", sender: "MapToSearch")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let postID = sender as? Int{
+            let dest = segue.destination as! SinglePostVC
+            dest.postId = postID
+        }
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
     let manager = CLLocationManager()
     
@@ -87,7 +94,7 @@ extension MapVC:MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as! customAnnotation
         print("You selected a point: \(annotation.title!), wih id: \(annotation.postID!)")
-        performSegue(withIdentifier: "MapToSingleSegue", sender: "MapToSingle")
+        performSegue(withIdentifier: "MapToSingleSegue", sender: annotation.postID!)
         //Perform segue to page with this picture
         //Make custom class for annotation
     }

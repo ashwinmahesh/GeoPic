@@ -56,3 +56,15 @@ def getRecentPosts(request):
     }
     return JsonResponse(data)
 
+@csrf_exempt
+def getPost(request):
+    print("Recieved get post request")
+    if request.method!='POST':
+        return HttpResponse('You are not posting!')
+    print(request.POST)
+    post_id = request.POST['post_id']
+    if len(Post.objects.filter(id=post_id))==0:
+        return JsonResponse({'response':'This post does not exist'})
+    post = Post.objects.get(id=post_id)
+    response = {'poster':post.poster, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description}
+    return JsonResponse(response)
