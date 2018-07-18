@@ -43,9 +43,17 @@ class SinglePostVC: UIViewController {
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print(jsonResult)
-                    DispatchQueue.main.async {
-                    }
+//                    print(jsonResult)
+//                    let imageData = jsonResult["image_data"] as! String
+//                    if let decodedData = Data(base64Encoded: imageData, options: .ignoreUnknownCharacters){
+//                        let decodedImage:UIImage = UIImage(data: decodedData)!
+                        DispatchQueue.main.async {
+                            self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
+                            self.addressLabel.text = (jsonResult["location"] as! String)
+                            self.descriptionView.text = (jsonResult["description"] as! String)
+//                            self.imageView.image = decodedImage
+                        }
+//                    }
                 }
             }
             catch{
@@ -55,15 +63,5 @@ class SinglePostVC: UIViewController {
         task.resume()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

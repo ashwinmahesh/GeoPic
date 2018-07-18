@@ -57,6 +57,7 @@ def getRecentPosts(request):
     return JsonResponse(data)
 
 @csrf_exempt
+#IMAGE GET NOT WORKING
 def getPost(request):
     print("Recieved get post request")
     if request.method!='POST':
@@ -66,7 +67,9 @@ def getPost(request):
     if len(Post.objects.filter(id=post_id))==0:
         return JsonResponse({'response':'This post does not exist'})
     post = Post.objects.get(id=post_id)
-    response = {'poster':post.poster, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description}
+    image_data_raw = post.image
+    image_data=image_data_raw.replace('\n', '').replace('\r', '').replace(' ', '')
+    response = {'first_name':post.poster.first_name, 'last_name':post.poster.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'image_data':image_data}
     return JsonResponse(response)
 
 def uploadFile(request):
@@ -88,5 +91,19 @@ def uploadImage(request):
         return HttpResponse('You are not posting')
     print(request.POST['username'])
     user = User.objects.get(username=request.POST['username'])
-    Post.objects.create(image=request.POST['image_data'], poster=user, longitude='37.3', latitude='-121.910198', location='1920 Zanker Rd, San Jose, CA 95112', description='Blah blah blah blah')
+    image_data_raw = request.POST['image_data']
+    # image_data_raw.replace('\n','')
+    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude='37.3', latitude='-121.910198', location='1920 Zanker Rd, San Jose, CA 95112', description='Blah blah blah blah')
     return JsonResponse({'response':'upload recieved'})
+
+@csrf_exempt
+def fetchAll(request):
+    posts=Post.objects.all().values()
+    data={
+        'posts':list(posts)
+    }
+    return JsonResponse(data)
+    
+def getName(request):
+    if request.method!='POST':
+        return HttpResponse('You are not posting')

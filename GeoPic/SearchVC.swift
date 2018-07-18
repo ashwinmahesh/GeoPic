@@ -58,7 +58,7 @@ class SearchVC: UIViewController {
                     let posts = jsonResult["posts"] as! NSMutableArray
                     for post in posts{
                         let postFixed = post as! NSDictionary
-                        print("Poster: ",postFixed["poster"] as! String, "Location: ", postFixed["location"])
+                        print("Poster: ",postFixed["first_name"] as! String, "Location: ", postFixed["location"])
                     }
                     DispatchQueue.main.async{
                         self.collectionView.reloadData()
