@@ -43,11 +43,13 @@ class MapVC: UIViewController {
     }
     
     func placePhotos(){
-        let annotation=MKPointAnnotation()
+//        let annotation=MKPointAnnotation()
+        let annotation = customAnnotation()
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37535889999999, -121.91019770000003)
         annotation.coordinate = location
         annotation.title = "Michael Choi"
         annotation.subtitle = "Posted on 7/16/18"
+        annotation.postID = 1
         mapView.addAnnotation(annotation)
     }
 }
@@ -80,10 +82,16 @@ extension MapVC:CLLocationManagerDelegate{
             }
         }
     }
-    
 }
 extension MapVC:MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("You selected a point")
+        let annotation = view.annotation as! customAnnotation
+        print("You selected a point: \(annotation.title!), wih id: \(annotation.postID!)")
+        //Perform segue to page with this picture
+        //Make custom class for annotation
     }
+}
+
+class customAnnotation:MKPointAnnotation{
+    var postID:Int?
 }
