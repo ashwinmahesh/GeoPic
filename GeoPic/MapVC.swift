@@ -87,6 +87,7 @@ extension MapVC:MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as! customAnnotation
         print("You selected a point: \(annotation.title!), wih id: \(annotation.postID!)")
+        performSegue(withIdentifier: "MapToSingleSegue", sender: "MapToSingle")
         //Perform segue to page with this picture
         //Make custom class for annotation
     }
