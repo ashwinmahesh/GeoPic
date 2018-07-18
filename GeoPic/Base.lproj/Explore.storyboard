@@ -351,13 +351,22 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iSc-vE-oNu">
                                 <rect key="frame" x="0.0" y="64" width="414" height="612"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1920 Zanker Rd, San Jose, CA 95112" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQg-mo-jWf">
+                                <rect key="frame" x="20" y="75" width="374" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="D14-gB-6Ix" firstAttribute="bottom" secondItem="BoW-OO-8h5" secondAttribute="bottom" id="8mg-2t-3DF"/>
+                            <constraint firstItem="EQg-mo-jWf" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" constant="20" id="GYt-Pe-4RO"/>
                             <constraint firstItem="D14-gB-6Ix" firstAttribute="trailing" secondItem="BoW-OO-8h5" secondAttribute="trailing" id="No9-IT-RiI"/>
                             <constraint firstItem="moU-RS-gu9" firstAttribute="top" secondItem="D14-gB-6Ix" secondAttribute="top" id="SWS-br-8eI"/>
+                            <constraint firstItem="EQg-mo-jWf" firstAttribute="top" secondItem="moU-RS-gu9" secondAttribute="bottom" constant="11" id="VL3-J1-Lg2"/>
                             <constraint firstItem="BoW-OO-8h5" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" id="WP3-3W-OjN"/>
+                            <constraint firstItem="D14-gB-6Ix" firstAttribute="trailing" secondItem="EQg-mo-jWf" secondAttribute="trailing" constant="20" id="WhV-qX-iaS"/>
                             <constraint firstItem="BoW-OO-8h5" firstAttribute="top" secondItem="iSc-vE-oNu" secondAttribute="bottom" id="fAu-US-AvE"/>
                             <constraint firstItem="D14-gB-6Ix" firstAttribute="trailing" secondItem="iSc-vE-oNu" secondAttribute="trailing" id="j1L-Au-m9g"/>
                             <constraint firstItem="iSc-vE-oNu" firstAttribute="leading" secondItem="D14-gB-6Ix" secondAttribute="leading" id="kkV-Qg-J3X"/>
@@ -368,6 +377,7 @@
                         <viewLayoutGuide key="safeArea" id="D14-gB-6Ix"/>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="EQg-mo-jWf" id="h9m-4x-Opy"/>
                         <outlet property="mapView" destination="iSc-vE-oNu" id="erV-dP-ks3"/>
                         <segue destination="i9c-re-GV2" kind="presentation" identifier="MapToExploreSegue" animates="NO" id="hZ1-KV-aCX"/>
                         <segue destination="Sc5-Bc-mpk" kind="presentation" identifier="MapToSearchSegue" animates="NO" id="UfP-qf-bHC"/>
@@ -375,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sek-i7-wCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2559" y="142"/>
+            <point key="canvasLocation" x="2557.971014492754" y="141.84782608695653"/>
         </scene>
     </scenes>
     <resources>
