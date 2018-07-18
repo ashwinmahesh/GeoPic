@@ -86,5 +86,7 @@ def processUpload(request):
 def uploadImage(request):
     if request.method!='POST':
         return HttpResponse('You are not posting')
-    print(request.POST)
+    print(request.POST['username'])
+    user = User.objects.get(username=request.POST['username'])
+    Post.objects.create(image=request.POST['image_data'], poster=user, longitude='37.3', latitude='-121.910198', location='1920 Zanker Rd, San Jose, CA 95112', description='Blah blah blah blah')
     return JsonResponse({'response':'upload recieved'})

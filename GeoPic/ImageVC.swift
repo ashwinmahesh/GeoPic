@@ -33,7 +33,8 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         let url = URL(string: "http://192.168.1.228:8000/uploadImage/")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
-        let bodyData = "image_data=\(imageData)"
+        let username="ashwin"
+        let bodyData = "username=\(username)&image_data=\(imageData)"
         request.httpBody = bodyData.data(using: .utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest){
