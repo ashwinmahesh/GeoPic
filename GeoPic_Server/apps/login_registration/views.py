@@ -67,9 +67,9 @@ def getPost(request):
     if len(Post.objects.filter(id=post_id))==0:
         return JsonResponse({'response':'This post does not exist'})
     post = Post.objects.get(id=post_id)
-    image_data_raw = post.image
-    image_data=image_data_raw.replace('\n', '').replace('\r', '').replace(' ', '')
-    response = {'first_name':post.poster.first_name, 'last_name':post.poster.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'image_data':image_data}
+    # image_data_raw = post.image
+    # image_data=image_data_raw.replace('\n', '').replace('\r', '').replace(' ', '')
+    response = {'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at}
     return JsonResponse(response)
 
 def uploadFile(request):

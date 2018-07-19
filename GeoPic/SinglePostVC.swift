@@ -17,6 +17,7 @@ class SinglePostVC: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBAction func backPushed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -43,7 +44,7 @@ class SinglePostVC: UIViewController {
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-//                    print(jsonResult)
+                    print(jsonResult)
 //                    let imageData = jsonResult["image_data"] as! String
 //                    if let decodedData = Data(base64Encoded: imageData, options: .ignoreUnknownCharacters){
 //                        let decodedImage:UIImage = UIImage(data: decodedData)!
@@ -52,6 +53,7 @@ class SinglePostVC: UIViewController {
                             self.addressLabel.text = (jsonResult["location"] as! String)
                             self.descriptionView.text = (jsonResult["description"] as! String)
                             self.imageView.image = UIImage(named: "sample picture")
+                            self.dateLabel.text = jsonResult["created_at"] as! String
                         }
 //                    }
                 }
