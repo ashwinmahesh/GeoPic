@@ -51,7 +51,7 @@ class SinglePostVC: UIViewController {
                             self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
                             self.addressLabel.text = (jsonResult["location"] as! String)
                             self.descriptionView.text = (jsonResult["description"] as! String)
-//                            self.imageView.image = decodedImage
+                            self.imageView.image = UIImage(named: "sample picture")
                         }
 //                    }
                 }

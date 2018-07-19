@@ -22,6 +22,12 @@ class SearchVC: UIViewController {
     @IBAction func mapPushed(_ sender: UIButton) {
         performSegue(withIdentifier: "SearchToMapSegue", sender: "SearchToMap")
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchToMapSegue"{
+            let dest = segue.destination as! MapVC
+            dest.fetchAll()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self

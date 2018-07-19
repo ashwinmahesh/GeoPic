@@ -22,7 +22,8 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
     var image_data: String = ""
     var image_chosen=false
     
-//    Test function to test pulling from server
+    @IBOutlet var buttons: [UIButton]!
+    //    Test function to test pulling from server
     
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -59,7 +60,7 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
             }
         }
         task.resume()
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "UploadToExploreSegue", sender: "UploadToExplore")
     }
 //    Choose from photo library
     @IBAction func importPressed(_ sender: UIButton) {
@@ -100,6 +101,10 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        for button in buttons{
+            button.layer.cornerRadius=6
+        }
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
     }
 }
 
@@ -110,18 +115,18 @@ extension ImageVC: CLLocationManagerDelegate, UISearchBarDelegate {
         let location = locations[0]
         myLatitude = String(location.coordinate.latitude)
         myLongitude = String(location.coordinate.longitude)
-        print(myLongitude)
-        print(myLatitude)
+//        print(myLongitude)
+//        print(myLatitude)
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        print(myLocation)
-                
+//        print(myLocation)
+        
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil {
-                print("error")
+//                print("error")
             } else {
                 if let place = placemark?[0] {
                     if let checker = place.subThoroughfare{
-                        self.locationLabel.text = "\(place.subThoroughfare!), \(place.thoroughfare!), \(place.country!)"
+                        self.locationLabel.text = "\(place.subThoroughfare!) \(place.thoroughfare!), \(place.locality!), \(place.administrativeArea!) \(place.postalCode!)"
                     }
                 }
             }

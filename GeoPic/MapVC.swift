@@ -36,15 +36,27 @@ class MapVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         addressLabel.text=""
         manager.delegate = self
         mapView.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        fetchAll()
+//        fetchAll()
+//        print(tableData[1])
+//        let long = tableData[1]["longitude"] as! String
+//        print(long)
+//        if let longDouble = Double(long)
+//        {
+//            print("I can convert to double")
+//        }
         placePhotos()
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+//        fetchAll()
+//        placePhotos()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +68,8 @@ class MapVC: UIViewController {
 //        let annotation=MKPointAnnotation()
         for post in tableData{
             let annotation = customAnnotation()
-            let long = post["longitude"] as! Double
-            let lat = post["latitude"] as! Double
+            let long = Double(post["longitude"] as! String)!
+            let lat = Double(post["latitude"] as! String)!
             let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(long, lat)
             annotation.coordinate = location
             annotation.title = (post["first_name"] as! String) + " " + (post["last_name"] as! String)
@@ -65,30 +77,6 @@ class MapVC: UIViewController {
             annotation.postID = post["id"] as! Int
             mapView.addAnnotation(annotation)
         }
-        
-//        let annotation1 = customAnnotation()
-//        let location1:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37535889999999, -121.91119770000003)
-//        annotation1.coordinate = location1
-//        annotation1.title = "Michael Choi"
-//        annotation1.subtitle = "Posted on 7/16/18"
-//        annotation1.postID = 1
-//        mapView.addAnnotation(annotation1)
-//
-//        let annotation2 = customAnnotation()
-//        let location2:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37435889999999, -121.91019770000003)
-//        annotation2.coordinate = location2
-//        annotation2.title = "Ashwin Mahesh"
-//        annotation2.subtitle = "Posted on 7/16/18"
-//        annotation2.postID = 2
-//        mapView.addAnnotation(annotation2)
-//
-//        let annotation3 = customAnnotation()
-//        let location3:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37635889999999, -121.91019770000003)
-//        annotation3.coordinate = location3
-//        annotation3.title = "Andrew Skinenr"
-//        annotation3.subtitle = "Posted on 7/16/18"
-//        annotation3.postID = 3
-//        mapView.addAnnotation(annotation3)
     }
     
     func fetchAll(){
@@ -98,14 +86,14 @@ class MapVC: UIViewController {
         let task = session.dataTask(with: url!) { (data, response, error) in
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print(jsonResult)
+//                    print(jsonResult)
                     let posts = jsonResult["posts"] as! NSMutableArray
                     for post in posts{
                         let postFixed = post as! NSDictionary
                         self.tableData.append(postFixed)
                     }
                     DispatchQueue.main.async{
-//                        mapView.reload
+                        self.placePhotos()
                     }
                 }
             }
@@ -148,11 +136,10 @@ extension MapVC:CLLocationManagerDelegate{
 }
 extension MapVC:MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let annotation = view.annotation as! customAnnotation
-        print("You selected a point: \(annotation.title!), wih id: \(annotation.postID!)")
-        performSegue(withIdentifier: "MapToSingleSegue", sender: annotation.postID!)
-        //Perform segue to page with this picture
-        //Make custom class for annotation
+        if let annotation = view.annotation as? customAnnotation{
+            print("You selected a point: \(annotation.title!), wih id: \(annotation.postID!)")
+            performSegue(withIdentifier: "MapToSingleSegue", sender: annotation.postID!)
+        }
     }
 }
 

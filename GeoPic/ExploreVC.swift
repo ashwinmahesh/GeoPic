@@ -30,7 +30,7 @@ class ExploreVC: UIViewController {
         let task = session.dataTask(with: url!) { (data, response, error) in
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print(jsonResult)
+//                    print(jsonResult)
                     let posts = jsonResult["posts"] as! NSMutableArray
                     for post in posts{
                         let postFixed = post as! NSDictionary
@@ -48,11 +48,18 @@ class ExploreVC: UIViewController {
         task.resume()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ExploreToMapSegue"{
+            let dest = segue.destination as! MapVC
+            dest.fetchAll()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate=self
         tableView.dataSource=self
-        tableView.rowHeight=500
+        tableView.rowHeight=460
 //        fetchAll()
         // Do any additional setup after loading the view.
     }
@@ -75,7 +82,8 @@ extension ExploreVC:UITableViewDelegate, UITableViewDataSource{
         cell.nameLabel.text=(currentPost["first_name"] as! String) + " " + (currentPost["last_name"] as! String)
         cell.addressLabel.text=currentPost["location"] as! String
         cell.descriptionView.text=currentPost["description"] as! String
-        cell.pictureView.image = UIImage(named: "location")
+        cell.pictureView.image = UIImage(named: "sample picture")
+        cell.dateLabel.text=currentPost["created_at"] as! String
         return cell
     }
 }
