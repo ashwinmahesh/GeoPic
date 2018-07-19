@@ -53,8 +53,11 @@ class ExploreVC: UIViewController {
         tableView.delegate=self
         tableView.dataSource=self
         tableView.rowHeight=500
-        fetchAll()
+//        fetchAll()
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        fetchAll()
     }
 
     override func didReceiveMemoryWarning() {

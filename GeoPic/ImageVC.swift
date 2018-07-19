@@ -11,16 +11,18 @@ import MapKit
 import CoreLocation
 
 class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
+    @IBAction func backPushed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     let manager = CLLocationManager()
     var myLongitude = ""
     var myLatitude = ""
     var image_data: String = ""
+    var image_chosen=false
     
 //    Test function to test pulling from server
-    @IBAction func buttonPressed(_ sender: UIButton) {
-        
-    }
     
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -28,6 +30,12 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
 //    Button Action, sends to server
     @IBAction func postPressed(_ sender: UIButton) {
         print("You are pressing post")
+        if image_chosen==false{
+            return
+        }
+        if locationLabel.text==""{
+            return
+        }
         let image = UIImagePNGRepresentation(imageView.image!)!
         let imageData = image.base64EncodedString(options: .lineLength64Characters)
 //        print(imageData)
@@ -36,7 +44,7 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         request.httpMethod = "POST"
         let username="ashwin"
         let imageData_temp = "Here is temporary image data!"
-        let bodyData = "username=\(username)&image_data=\(imageData_temp)"
+        let bodyData = "username=\(username)&image_data=\(imageData_temp)&description=\(descriptionTextView.text!)&location=\(locationLabel.text!)&lat=\(myLatitude)&long=\(myLongitude)"
         request.httpBody = bodyData.data(using: .utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest){
@@ -51,6 +59,7 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
             }
         }
         task.resume()
+        dismiss(animated: true, completion: nil)
     }
 //    Choose from photo library
     @IBAction func importPressed(_ sender: UIButton) {
@@ -60,6 +69,7 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         image.allowsEditing = false
         self.present(image, animated: true) {
         }
+        image_chosen=true
     }
     
 //    Camera picture
@@ -70,6 +80,7 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         image.allowsEditing = false
         self.present(image, animated: true) {
         }
+        image_chosen=true
     }
 //    Set picture
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

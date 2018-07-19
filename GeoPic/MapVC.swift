@@ -55,40 +55,40 @@ class MapVC: UIViewController {
     func placePhotos(){
 //        let annotation=MKPointAnnotation()
         for post in tableData{
-//            let annotation = customAnnotation()
-//            let long = post["longitude"] as! Double
-//            let lat = post["latitude"] as! Double
-//            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(long, lat)
-//            annotation.coordinate = location
-//            annotation.title = (post["first_name"] as! String) + " " + (post["last_name"] as! String)
-//            annotation.subtitle = post["created_at"] as! String
-//            annotation.postID = post["id"] as! Int
-//            mapView.addAnnotation(annotation)
+            let annotation = customAnnotation()
+            let long = post["longitude"] as! Double
+            let lat = post["latitude"] as! Double
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(long, lat)
+            annotation.coordinate = location
+            annotation.title = (post["first_name"] as! String) + " " + (post["last_name"] as! String)
+            annotation.subtitle = post["created_at"] as! String
+            annotation.postID = post["id"] as! Int
+            mapView.addAnnotation(annotation)
         }
         
-        let annotation1 = customAnnotation()
-        let location1:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37535889999999, -121.91119770000003)
-        annotation1.coordinate = location1
-        annotation1.title = "Michael Choi"
-        annotation1.subtitle = "Posted on 7/16/18"
-        annotation1.postID = 1
-        mapView.addAnnotation(annotation1)
-        
-        let annotation2 = customAnnotation()
-        let location2:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37435889999999, -121.91019770000003)
-        annotation2.coordinate = location2
-        annotation2.title = "Ashwin Mahesh"
-        annotation2.subtitle = "Posted on 7/16/18"
-        annotation2.postID = 2
-        mapView.addAnnotation(annotation2)
-        
-        let annotation3 = customAnnotation()
-        let location3:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37635889999999, -121.91019770000003)
-        annotation3.coordinate = location3
-        annotation3.title = "Andrew Skinenr"
-        annotation3.subtitle = "Posted on 7/16/18"
-        annotation3.postID = 3
-        mapView.addAnnotation(annotation3)
+//        let annotation1 = customAnnotation()
+//        let location1:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37535889999999, -121.91119770000003)
+//        annotation1.coordinate = location1
+//        annotation1.title = "Michael Choi"
+//        annotation1.subtitle = "Posted on 7/16/18"
+//        annotation1.postID = 1
+//        mapView.addAnnotation(annotation1)
+//
+//        let annotation2 = customAnnotation()
+//        let location2:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37435889999999, -121.91019770000003)
+//        annotation2.coordinate = location2
+//        annotation2.title = "Ashwin Mahesh"
+//        annotation2.subtitle = "Posted on 7/16/18"
+//        annotation2.postID = 2
+//        mapView.addAnnotation(annotation2)
+//
+//        let annotation3 = customAnnotation()
+//        let location3:CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.37635889999999, -121.91019770000003)
+//        annotation3.coordinate = location3
+//        annotation3.title = "Andrew Skinenr"
+//        annotation3.subtitle = "Posted on 7/16/18"
+//        annotation3.postID = 3
+//        mapView.addAnnotation(annotation3)
     }
     
     func fetchAll(){

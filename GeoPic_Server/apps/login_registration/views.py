@@ -92,13 +92,17 @@ def uploadImage(request):
     print(request.POST['username'])
     user = User.objects.get(username=request.POST['username'])
     image_data_raw = request.POST['image_data']
+    description = request.POST['description']
+    location = request.POST['location']
+    latitude = request.POST['lat']
+    longitude = request.POST['long']
     # image_data_raw.replace('\n','')
-    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude='37.3', latitude='-121.910198', location='1920 Zanker Rd, San Jose, CA 95112', description='Blah blah blah blah')
+    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description)
     return JsonResponse({'response':'upload recieved'})
 
 @csrf_exempt
 def fetchAll(request):
-    posts=Post.objects.all().values()
+    posts=Post.objects.all().order_by("-created_at").values()
     data={
         'posts':list(posts)
     }
