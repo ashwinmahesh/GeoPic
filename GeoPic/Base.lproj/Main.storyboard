@@ -244,6 +244,21 @@
             </objects>
             <point key="canvasLocation" x="136.875" y="1139.7887323943662"/>
         </scene>
+        <!--Alamofire TestVC-->
+        <scene sceneID="oBz-ZP-PjE">
+            <objects>
+                <viewController id="BFt-Vk-ud7" customClass="AlamofireTestVC" customModule="GeoPic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="htA-0s-WoX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="q48-If-PXm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGO-VF-4JM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="119"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="Skf-m1-Brv">
             <objects>
@@ -256,4 +271,7 @@
     <resources>
         <image name="location" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kOa-wc-rhC"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from apps.login_registration.models import *
 import bcrypt
+import base64
 
 def index(request):
     return HttpResponse('You are set up correctly')
@@ -25,7 +26,7 @@ def processLogin(request):
     user = User.objects.get(username=username)
     # if bcrypt.checkpw(user.password.encode(), str(request.POST['password']).encode()):
     if request.POST['password']==user.password:
-        response = {'response':'Successful Login', 'first_name':user.first_name, 'last_name':user.last_name, 'username':user.username}
+        response = {'response':'Successful Login', 'first_name':user.first_name, 'last_name':user.last_name, 'username':user.username, 'upload_count':user.upload_count}
         return JsonResponse(response)
     response = {'response':'Invalid Login'}
     return JsonResponse(response)
@@ -91,6 +92,8 @@ def uploadImage(request):
         return HttpResponse('You are not posting')
     print(request.POST['username'])
     user = User.objects.get(username=request.POST['username'])
+    user.upload_count+=1
+    user.save()
     image_data_raw = request.POST['image_data']
     description = request.POST['description']
     location = request.POST['location']
@@ -121,3 +124,20 @@ def searchPosts(request):
             output.append({'id':post.id, 'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at})
 
     return JsonResponse({'posts':output})
+
+def alamoTest(request):
+    return JsonResponse({'response':'I am sending a response'})
+
+@csrf_exempt
+def alamoDataUpload(request):
+    if request.method!='POST':
+        print("Someone isn't posting")
+        return HttpResponse("You are not posting!")
+    print(request.FILES)
+    with open('Files/image.jpg', 'wb+') as destination:
+        for chunk in request.FILES['imageset'].chunks():
+            destination.write(chunk)
+    # for key in request.POST:
+    #     print(key)
+    # imageData_raw = base64.b64decode(request.POST)
+    return JsonResponse({'response':'We have recieved your file!'})

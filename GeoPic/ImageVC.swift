@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreData
+import Alamofire
 
 class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -44,21 +45,16 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         if locationLabel.text==""{
             return
         }
-        let image = UIImagePNGRepresentation(imageView.image!)!
-        let imageData = image.base64EncodedString(options: .lineLength64Characters)
-//        print(imageData)
-//        let url = URL(string: "http://192.168.1.228:8000/uploadImage/")
-        let url = URL(string: "\(SERVER_IP)/uploadImage/")
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        var username:String=""
         
+        var username:String=""
         //Get user info
         let coreRequest:NSFetchRequest<User>=User.fetchRequest()
         do{
             let result = try context.fetch(coreRequest).first
             if let user = result{
                 username = user.username!
+                user.upload_count+=1
+                appDelegate.saveContext()
             }
         }
         catch{
@@ -66,22 +62,11 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         }
         //End of get user info
         
-        let imageData_temp = "Here is temporary image data!"
-        let bodyData = "username=\(username)&image_data=\(imageData_temp)&description=\(descriptionTextView.text!)&location=\(locationLabel.text!)&lat=\(myLatitude)&long=\(myLongitude)"
-        request.httpBody = bodyData.data(using: .utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest){
-            data, response, error in
-            do{
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print(jsonResult)
-                }
-            }
-            catch{
-                print(error)
-            }
-        }
-        task.resume()
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.2)
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+////            multipartFormData.append(imageData, withName: "image",)
+//        }, to: <#T##URLConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
+//        
         performSegue(withIdentifier: "UploadToExploreSegue", sender: "UploadToExplore")
     }
 //    Choose from photo library

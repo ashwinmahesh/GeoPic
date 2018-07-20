@@ -49,8 +49,9 @@ class ViewController: UIViewController {
                             let firstname = jsonResult["first_name"] as! String
                             let lastname = jsonResult["last_name"] as! String
                             let username = jsonResult["username"] as! String
+                            let upload_count = jsonResult["upload_count"] as! Int16
                             
-                            self.thisUser.Log(username: username, firstname: firstname, lastname: lastname)
+                            self.thisUser.Log(username: username, firstname: firstname, lastname: lastname, upload_count: upload_count)
                             
                             DispatchQueue.main.async {
                                 self.performSegue(withIdentifier: "LoggedSegue", sender: nil)

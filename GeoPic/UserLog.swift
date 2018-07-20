@@ -18,6 +18,7 @@ class UserLog {
     var last_name: String = ""
     var userName: String = ""
     var logged: Bool = false
+    var upload_count: Int16 = 0
     
     init() {
         let request: NSFetchRequest<User> = User.fetchRequest()
@@ -30,6 +31,7 @@ class UserLog {
                 self.last_name = (result?.last_name)!
                 self.userName = (result?.username)!
                 self.logged = (result?.logged)!
+                self.upload_count = (result?.upload_count)!
             }
         } catch {
             print("\(error)")
@@ -66,7 +68,7 @@ class UserLog {
         return false
     }
     
-    func Log(username: String, firstname: String, lastname: String) {
+    func Log(username: String, firstname: String, lastname: String, upload_count:Int16) {
         let request: NSFetchRequest<User> = User.fetchRequest()
         print("logging")
         do {
@@ -76,6 +78,7 @@ class UserLog {
                 user.last_name = lastname
                 user.username = username
                 user.logged = true
+                user.upload_count = upload_count
                 print("Last User")
                 print(user)
             }
@@ -86,6 +89,7 @@ class UserLog {
                 user.last_name = lastname
                 user.username = username
                 user.logged = true
+                user.upload_count = upload_count
                 print(user)
                 print("Logged")
             }

@@ -12,4 +12,6 @@ urlpatterns=[
     url(r'^uploadImage/$', views.uploadImage),
     url(r'^fetchAll/$', views.fetchAll),
     url(r'^searchPosts/$', views.searchPosts),
+    url(r'^alamoTest/$', views.alamoTest),
+    url(r'^alamoDataUpload/$', views.alamoDataUpload),
 ]

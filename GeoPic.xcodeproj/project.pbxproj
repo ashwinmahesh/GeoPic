@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1632522CEF095D4258916697 /* Pods_GeoPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52839BBDDBA6E93DE3F4D2CC /* Pods_GeoPic.framework */; };
 		CF228C9420FFA1060047D333 /* SinglePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9320FFA1060047D333 /* SinglePostVC.swift */; };
 		CF228C9720FFAE020047D333 /* UserLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9520FFAE010047D333 /* UserLog.swift */; };
 		CF228C9820FFAE020047D333 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9620FFAE010047D333 /* RegistrationViewController.swift */; };
 		CF228C9A20FFB4430047D333 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF228C9920FFB4430047D333 /* ImageVC.swift */; };
 		CF228C9D20FFB44C0047D333 /* Upload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF228C9B20FFB44C0047D333 /* Upload.storyboard */; };
+		CF48DA5F21027DA9009658CC /* AlamofireTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48DA5E21027DA8009658CC /* AlamofireTestVC.swift */; };
 		CF8AAFB320FE87D70081EB58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */; };
 		CF8AAFB520FE87D70081EB58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AAFB420FE87D70081EB58 /* ViewController.swift */; };
 		CF8AAFB820FE87D70081EB58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AAFB620FE87D70081EB58 /* Main.storyboard */; };
@@ -29,11 +31,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52839BBDDBA6E93DE3F4D2CC /* Pods_GeoPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		902A6E8CA2B33407188F895D /* Pods-GeoPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoPic.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoPic/Pods-GeoPic.release.xcconfig"; sourceTree = "<group>"; };
+		B666EDA692ACFDE43D2358FB /* Pods-GeoPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoPic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoPic/Pods-GeoPic.debug.xcconfig"; sourceTree = "<group>"; };
 		CF228C9320FFA1060047D333 /* SinglePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostVC.swift; sourceTree = "<group>"; };
 		CF228C9520FFAE010047D333 /* UserLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLog.swift; sourceTree = "<group>"; };
 		CF228C9620FFAE010047D333 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		CF228C9920FFB4430047D333 /* ImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		CF228C9C20FFB44C0047D333 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Upload.storyboard; sourceTree = "<group>"; };
+		CF48DA5E21027DA8009658CC /* AlamofireTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTestVC.swift; sourceTree = "<group>"; };
 		CF8AAFAF20FE87D70081EB58 /* GeoPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8AAFB220FE87D70081EB58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8AAFB420FE87D70081EB58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,18 +64,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF8AAFD720FEE2180081EB58 /* CoreLocation.framework in Frameworks */,
+				1632522CEF095D4258916697 /* Pods_GeoPic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BDDA230F2B2213CFD41DF9AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B666EDA692ACFDE43D2358FB /* Pods-GeoPic.debug.xcconfig */,
+				902A6E8CA2B33407188F895D /* Pods-GeoPic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CF8AAFA620FE87D70081EB58 = {
 			isa = PBXGroup;
 			children = (
 				CF8AAFB120FE87D70081EB58 /* GeoPic */,
 				CF8AAFB020FE87D70081EB58 /* Products */,
 				CF8AAFD420FEE1EC0081EB58 /* Frameworks */,
+				BDDA230F2B2213CFD41DF9AF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +112,7 @@
 				CF8AAFB620FE87D70081EB58 /* Main.storyboard */,
 				CF228C9B20FFB44C0047D333 /* Upload.storyboard */,
 				CF228C9920FFB4430047D333 /* ImageVC.swift */,
+				CF48DA5E21027DA8009658CC /* AlamofireTestVC.swift */,
 				CF8AAFCA20FE9E770081EB58 /* PictureCell.swift */,
 				CF8AAFC720FE98520081EB58 /* Explore.storyboard */,
 				CF8AAFD020FED0D10081EB58 /* SearchVC.swift */,
@@ -111,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8AAFD520FEE1EC0081EB58 /* CoreLocation.framework */,
+				52839BBDDBA6E93DE3F4D2CC /* Pods_GeoPic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF8AAFC420FE87D80081EB58 /* Build configuration list for PBXNativeTarget "GeoPic" */;
 			buildPhases = (
+				4694D9A209E9D1D47B36DB74 /* [CP] Check Pods Manifest.lock */,
 				CF8AAFAB20FE87D70081EB58 /* Sources */,
 				CF8AAFAC20FE87D70081EB58 /* Frameworks */,
 				CF8AAFAD20FE87D70081EB58 /* Resources */,
+				A6175F4E876B2DDA9ECCEC27 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +204,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4694D9A209E9D1D47B36DB74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeoPic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6175F4E876B2DDA9ECCEC27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GeoPic/Pods-GeoPic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoPic/Pods-GeoPic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CF8AAFAB20FE87D70081EB58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -191,6 +251,7 @@
 				CF8AAFD120FED0D10081EB58 /* SearchVC.swift in Sources */,
 				CF8AAFCB20FE9E770081EB58 /* PictureCell.swift in Sources */,
 				CF228C9420FFA1060047D333 /* SinglePostVC.swift in Sources */,
+				CF48DA5F21027DA9009658CC /* AlamofireTestVC.swift in Sources */,
 				CF228C9820FFAE020047D333 /* RegistrationViewController.swift in Sources */,
 				CF228C9720FFAE020047D333 /* UserLog.swift in Sources */,
 				CFE45BE921025E640048CB2A /* IP_ADDRESS.swift in Sources */,
@@ -358,6 +419,7 @@
 		};
 		CF8AAFC520FE87D80081EB58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B666EDA692ACFDE43D2358FB /* Pods-GeoPic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +438,7 @@
 		};
 		CF8AAFC620FE87D80081EB58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 902A6E8CA2B33407188F895D /* Pods-GeoPic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
