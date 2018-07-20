@@ -50,7 +50,7 @@ def processRegister(request):
 
 @csrf_exempt
 def getRecentPosts(request):
-    posts = Post.objects.all().order_by('-created_at')[0:20].values()
+    posts = Post.objects.all().order_by('-created_at')[0:40].values()
     data={
         'posts':list(posts)
     }

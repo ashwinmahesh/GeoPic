@@ -46,12 +46,12 @@ class MapVC: UIViewController {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        placePhotos()
+//        placePhotos()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
 //        fetchAll()
-//        placePhotos()
+        placePhotos()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +61,7 @@ class MapVC: UIViewController {
     
     func placePhotos(){
 //        let annotation=MKPointAnnotation()
+        var annotations:[MKAnnotation] = []
         for post in tableData{
             let annotation = customAnnotation()
             let long = Double(post["longitude"] as! String)!
@@ -70,8 +71,10 @@ class MapVC: UIViewController {
             annotation.title = (post["first_name"] as! String) + " " + (post["last_name"] as! String)
             annotation.subtitle = post["created_at"] as! String
             annotation.postID = post["id"] as! Int
-            mapView.addAnnotation(annotation)
+//            mapView.addAnnotation(annotation)
+            annotations.append(annotation as! MKAnnotation)
         }
+        mapView.showAnnotations(annotations, animated: true)
     }
     
     func fetchAll(){
@@ -104,7 +107,7 @@ extension MapVC:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.005, 0.005)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.003, 0.003)
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
