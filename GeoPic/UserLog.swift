@@ -14,7 +14,27 @@ class UserLog {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    init() { }
+    var first_name: String = ""
+    var last_name: String = ""
+    var userName: String = ""
+    var logged: Bool = false
+    
+    init() {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        //        let filter = "first_name==%@ && last_name==%@ && username==%@"
+        //        request.predicate = NSPredicate(format: filter, firstname, lastname, username)
+        do {
+            let result = try context.fetch(request).first
+            if result != nil {
+                self.first_name = (result?.first_name)!
+                self.last_name = (result?.last_name)!
+                self.userName = (result?.username)!
+                self.logged = (result?.logged)!
+            }
+        } catch {
+            print("\(error)")
+        }
+    }
     
     func isLogged() -> Bool {
         print("Checking Logs")
@@ -52,7 +72,7 @@ class UserLog {
         do {
             let result = try context.fetch(request).first
             if let user = result {
-                user.first_name = username
+                user.first_name = firstname
                 user.last_name = lastname
                 user.username = username
                 user.logged = true
@@ -62,7 +82,7 @@ class UserLog {
             else {
                 let user = User(context: context)
                 
-                user.first_name = username
+                user.first_name = firstname
                 user.last_name = lastname
                 user.username = username
                 user.logged = true
@@ -78,8 +98,8 @@ class UserLog {
     
     func LogOut() {
         let request: NSFetchRequest<User> = User.fetchRequest()
-//        request.predicate = NSPredicate(format: "username==%@", username)
-
+        //        request.predicate = NSPredicate(format: "username==%@", username)
+        
         do {
             let result = try context.fetch(request).first
             if let user = result {

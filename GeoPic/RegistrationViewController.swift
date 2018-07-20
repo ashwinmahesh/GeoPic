@@ -74,7 +74,7 @@ class RegistrationViewController: UIViewController {
                             }
                             else {
                                 DispatchQueue.main.async {
-                                    self.Alert(title: "Registration Failed", message: "Please contact administrator.")
+                                    self.Alert(title: "Registration Failed", message: "A user already exists with this username.")
                                 }
                             }
                         }

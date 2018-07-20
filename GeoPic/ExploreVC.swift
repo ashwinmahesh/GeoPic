@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ExploreVC: UIViewController {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var tableData:[NSDictionary]=[]
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +27,25 @@ class ExploreVC: UIViewController {
     @IBAction func uploadPushed(_ sender: UIButton) {
         performSegue(withIdentifier: "ExploreToUploadSegue", sender: "ExploreToUpload")
     }
+    
+    @IBAction func logoutPushed(_ sender: UIBarButtonItem) {
+        let request:NSFetchRequest<User>=User.fetchRequest()
+        do{
+            let result = try context.fetch(request).first
+            if let user = result{
+                user.logged=false
+                user.first_name=""
+                user.last_name=""
+                user.username=""
+                appDelegate.saveContext()
+            }
+        }
+        catch{
+            print(error)
+        }
+        performSegue(withIdentifier: "ExploreToMainSegue", sender: "ExploreToMain")
+    }
+    
     func fetchAll(){
         tableData=[]
         let url=URL(string: "http://192.168.1.228:8000/fetchAll/")

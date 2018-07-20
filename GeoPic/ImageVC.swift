@@ -9,12 +9,16 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func backPushed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let manager = CLLocationManager()
     var myLongitude = ""
@@ -43,7 +47,21 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         let url = URL(string: "http://192.168.1.228:8000/uploadImage/")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
-        let username="ashwin"
+        var username:String=""
+        
+        //Get user info
+        let coreRequest:NSFetchRequest<User>=User.fetchRequest()
+        do{
+            let result = try context.fetch(coreRequest).first
+            if let user = result{
+                username = user.username!
+            }
+        }
+        catch{
+            print(error)
+        }
+        //End of get user info
+        
         let imageData_temp = "Here is temporary image data!"
         let bodyData = "username=\(username)&image_data=\(imageData_temp)&description=\(descriptionTextView.text!)&location=\(locationLabel.text!)&lat=\(myLatitude)&long=\(myLongitude)"
         request.httpBody = bodyData.data(using: .utf8)

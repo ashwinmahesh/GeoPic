@@ -100,6 +100,14 @@
             </objects>
             <point key="canvasLocation" x="670" y="-778"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="pIR-KD-Tya">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" id="T1B-Ni-cKg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0BL-tX-bbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="152"/>
+        </scene>
         <!--ExploreVC-->
         <scene sceneID="eLM-IA-zDN">
             <objects>
@@ -234,6 +242,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="GeoPic" id="iMT-gx-cmg">
+                                        <barButtonItem key="leftBarButtonItem" title="Log out" id="Huo-wW-fEM">
+                                            <connections>
+                                                <action selector="logoutPushed:" destination="i9c-re-GV2" id="sIR-C5-ncw"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="RUn-Zs-IG6">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fqd-xz-HHV">
                                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -271,6 +284,7 @@
                         <segue destination="Sc5-Bc-mpk" kind="presentation" identifier="ExploreToSearchSegue" animates="NO" id="Njv-wB-00s"/>
                         <segue destination="bdG-4M-VxC" kind="presentation" identifier="ExploreToMapSegue" animates="NO" id="zDD-ME-OJY"/>
                         <segue destination="dQ1-ni-SQO" kind="presentation" identifier="ExploreToUploadSegue" id="jR7-Sa-KZX"/>
+                        <segue destination="T1B-Ni-cKg" kind="presentation" identifier="ExploreToMainSegue" id="Gkb-X4-bxy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-5m-WVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -686,9 +700,9 @@
         <image name="magnifying glass" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RXb-ee-cTX"/>
-        <segue reference="1Vq-BV-uhR"/>
-        <segue reference="RVZ-Hc-T0b"/>
+        <segue reference="zDD-ME-OJY"/>
+        <segue reference="Njv-wB-00s"/>
+        <segue reference="jR7-Sa-KZX"/>
         <segue reference="RH3-qk-nDb"/>
     </inferredMetricsTieBreakers>
 </document>
