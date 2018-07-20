@@ -18,9 +18,15 @@ class SearchVC: UIViewController {
     @IBAction func homePushed(_ sender: UIButton) {
         performSegue(withIdentifier: "SearchToExploreSegue", sender: "SearchToExplore")
     }
-    @IBAction func textEntered(_ sender: UITextField) {
-        
+    @IBAction func goPushed(_ sender: UIButton) {
+        if textField.text!.count>0{
+            searchRecent(searchKey: textField.text!)
+        }
+        else{
+            fetchRecent()
+        }
     }
+    
     @IBAction func mapPushed(_ sender: UIButton) {
         performSegue(withIdentifier: "SearchToMapSegue", sender: "SearchToMap")
     }
@@ -46,16 +52,25 @@ class SearchVC: UIViewController {
     func searchRecent(searchKey:String){
         tableData = []
 //        let urlString = "http://192.168.1.228:8000/searchPosts/" + searchKey + "/"
-        let urlString = "\(SERVER_IP)/searchPosts/" + searchKey + "/"
-        let url = URL(string: urlString)
+        let url = URL(string: "\(SERVER_IP)/searchPosts/")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        let bodyData = "searchFor=\(searchKey)"
+        request.httpBody = bodyData.data(using: .utf8)
         let session = URLSession.shared
-        let task = session.dataTask(with:url!, completionHandler:{
+        let task = session.dataTask(with:request as URLRequest, completionHandler:{
             data, response, error in
             do{
-                
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
+                    print(jsonResult)
+                    
+                    DispatchQueue.main.async{
+                        self.collectionView.reloadData()
+                    }
+                }
             }
             catch{
-                
+                print(error)
             }
         })
         task.resume()
@@ -104,6 +119,7 @@ extension SearchVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("You selected a cell!")
         let cell = collectionView.cellForItem(at: indexPath) as! SearchCell
         performSegue(withIdentifier: "SearchToSingleSegue", sender: cell.post_id!)
     }

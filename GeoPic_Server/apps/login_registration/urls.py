@@ -11,4 +11,5 @@ urlpatterns=[
     url(r'^processUpload/$', views.processUpload),
     url(r'^uploadImage/$', views.uploadImage),
     url(r'^fetchAll/$', views.fetchAll),
+    url(r'^searchPosts/$', views.searchPosts),
 ]

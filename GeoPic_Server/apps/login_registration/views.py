@@ -109,6 +109,9 @@ def fetchAll(request):
     # print(posts)
     return JsonResponse(data)
     
-def getName(request):
+@csrf_exempt 
+def searchPosts(request):
     if request.method!='POST':
-        return HttpResponse('You are not posting')
+        return HttpResponse('You are not posting!')
+    print(request.POST)
+    return JsonResponse({'response':'We recieved your request'})
