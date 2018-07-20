@@ -18,6 +18,13 @@ class SinglePostVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBAction func homePushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "SingleToExploreSegue", sender: "SingleToExplore")
+    }
+    
+    @IBAction func searchPushed(_ sender: UIButton) {
+        performSegue(withIdentifier: "SingleToSearchSegue", sender: "SingleToSearch")
+    }
     
     @IBAction func backPushed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
