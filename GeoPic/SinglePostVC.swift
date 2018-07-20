@@ -9,6 +9,7 @@
 import UIKit
 
 class SinglePostVC: UIViewController {
+    var SERVER_IP:String = "http://192.168.1.20:8000"
 
     var postId:Int?
     
@@ -42,7 +43,8 @@ class SinglePostVC: UIViewController {
     }
     
     func getPost(){
-        let url = URL(string: "http://192.168.1.228:8000/getPost/")
+//        let url = URL(string: "http://192.168.1.228:8000/getPost/")
+        let url = URL(string: "\(SERVER_IP)/getPost/")
         var request = URLRequest(url: url!)
         request.httpMethod="POST"
         let bodyData = "post_id=\(postId!)"

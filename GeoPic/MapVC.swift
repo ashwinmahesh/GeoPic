@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 class MapVC: UIViewController {
+    var SERVER_IP:String = "http://192.168.1.20:8000"
     
     var tableData:[NSDictionary]=[]
 
@@ -44,15 +45,6 @@ class MapVC: UIViewController {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-//        print(tableData)
-//        fetchAll()
-//        print(tableData[1])
-//        let long = tableData[1]["longitude"] as! String
-//        print(long)
-//        if let longDouble = Double(long)
-//        {
-//            print("I can convert to double")
-//        }
         placePhotos()
         // Do any additional setup after loading the view.
     }
@@ -79,22 +71,12 @@ class MapVC: UIViewController {
             annotation.postID = post["id"] as! Int
             mapView.addAnnotation(annotation)
         }
-//        let post = tableData[0]
-//        let annotation = customAnnotation()
-//        let long = Double(post["longitude"] as! String)!
-//        let lat = Double(post["latitude"] as! String)!
-//        print("longitude: \(long), latitude: \(lat)")
-//        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
-//        annotation.coordinate = location
-//        annotation.title = (post["first_name"] as! String) + " " + (post["last_name"] as! String)
-//        annotation.subtitle = post["created_at"] as! String
-//        annotation.postID = post["id"] as! Int
-//        mapView.addAnnotation(annotation)
     }
     
     func fetchAll(){
         tableData=[]
-        let url=URL(string: "http://192.168.1.228:8000/fetchAll/")
+//        let url=URL(string: "http://192.168.1.228:8000/fetchAll/")
+        let url=URL(string: "\(SERVER_IP)/fetchAll/")
         let session = URLSession.shared
         let task = session.dataTask(with: url!) { (data, response, error) in
             do{

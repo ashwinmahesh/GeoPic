@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var SERVER_IP:String = "http://192.168.1.20:8000"
     @IBOutlet weak var UsernameLabel: UITextField!
     @IBOutlet weak var PasswordLabel: UITextField!
     
@@ -68,8 +69,9 @@ class ViewController: UIViewController {
     }
     
     func login(username: String, password: String, completionHandler: @escaping(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
-        if let urlReq = URL(string: "http://192.168.1.228:8000/processLogin/") {
-            
+//        if let urlReq = URL(string: "http://192.168.1.228:8000/processLogin/") {
+        if let urlReq = URL(string: "\(SERVER_IP)/processLogin/") {
+        
             var request = URLRequest(url: urlReq)
             request.httpMethod = "POST"
             let bodyData = "username=\(username)&password=\(password)"

@@ -106,7 +106,7 @@ def fetchAll(request):
     data={
         'posts':list(posts)
     }
-    print(posts)
+    # print(posts)
     return JsonResponse(data)
     
 def getName(request):

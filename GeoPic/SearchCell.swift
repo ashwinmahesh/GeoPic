@@ -10,9 +10,6 @@ import UIKit
 
 class SearchCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     var post_id:Int?
-    @IBAction func buttonPushed(_ sender: UIButton) {
-        
-    }
 }

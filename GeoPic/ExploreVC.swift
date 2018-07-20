@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class ExploreVC: UIViewController {
+    var SERVER_IP:String = "http://192.168.1.20:8000"
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -48,7 +50,8 @@ class ExploreVC: UIViewController {
     
     func fetchAll(){
         tableData=[]
-        let url=URL(string: "http://192.168.1.228:8000/fetchAll/")
+//        let url=URL(string: "http://192.168.1.228:8000/fetchAll/")
+        let url=URL(string: "\(SERVER_IP)/fetchAll/")
         let session = URLSession.shared
         let task = session.dataTask(with: url!) { (data, response, error) in
             do{

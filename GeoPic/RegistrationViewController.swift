@@ -9,6 +9,9 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
+    
+    var SERVER_IP:String = "http://192.168.1.20:8000"
+    
     @IBOutlet weak var FirstNameTextField: UITextField!
     @IBOutlet weak var LastNameTextField: UITextField!
     @IBOutlet weak var UsernameTextField: UITextField!
@@ -92,7 +95,8 @@ class RegistrationViewController: UIViewController {
     }
     
     func Register(bodyData: String, completionHandler: @escaping(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
-        if let urlReq = URL(string: "http://192.168.1.228:8000/processRegister/") {
+//        if let urlReq = URL(string: "http://192.168.1.228:8000/processRegister/") {
+        if let urlReq = URL(string: "\(SERVER_IP)/processRegister/") {
             var request = URLRequest(url: urlReq)
             request.httpMethod = "POST"
             request.httpBody = bodyData.data(using: .utf8)

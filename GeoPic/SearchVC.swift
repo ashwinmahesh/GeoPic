@@ -10,7 +10,9 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    var tableData:[String]=[]
+    var SERVER_IP:String = "http://192.168.1.20:8000"
+    
+    var tableData:[NSDictionary]=[]
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextField!
     @IBAction func homePushed(_ sender: UIButton) {
@@ -27,18 +29,24 @@ class SearchVC: UIViewController {
             let dest = segue.destination as! MapVC
             dest.fetchAll()
         }
+        if segue.identifier == "SearchToSingleSegue"{
+            let dest = segue.destination as! SinglePostVC
+            dest.postId = sender as! Int
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         fetchRecent()
         // Do any additional setup after loading the view.
     }
     
     func searchRecent(searchKey:String){
         tableData = []
-        let urlString = "http://192.168.1.228:8000/searchPosts/" + searchKey + "/"
+//        let urlString = "http://192.168.1.228:8000/searchPosts/" + searchKey + "/"
+        let urlString = "\(SERVER_IP)/searchPosts/" + searchKey + "/"
         let url = URL(string: urlString)
         let session = URLSession.shared
         let task = session.dataTask(with:url!, completionHandler:{
@@ -55,7 +63,8 @@ class SearchVC: UIViewController {
     
     func fetchRecent(){
         tableData=[]
-        let url = URL(string: "http://192.168.1.228:8000/getRecentPosts/")
+//        let url = URL(string: "http://192.168.1.228:8000/getRecentPosts/")
+        let url = URL(string: "\(SERVER_IP)/getRecentPosts/")
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler:{
             data, response, error in
@@ -64,7 +73,7 @@ class SearchVC: UIViewController {
                     let posts = jsonResult["posts"] as! NSMutableArray
                     for post in posts{
                         let postFixed = post as! NSDictionary
-                        print("Poster: ",postFixed["first_name"] as! String, "Location: ", postFixed["location"])
+                        self.tableData.append(postFixed)
                     }
                     DispatchQueue.main.async{
                         self.collectionView.reloadData()
@@ -90,7 +99,12 @@ extension SearchVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as! SearchCell
-        
+        cell.post_id = tableData[indexPath.row]["id"] as! Int
+        cell.imageView.image = UIImage(named: "sample picture")
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SearchCell
+        performSegue(withIdentifier: "SearchToSingleSegue", sender: cell.post_id!)
     }
 }

@@ -13,6 +13,8 @@ import CoreData
 
 class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var SERVER_IP:String = "http://192.168.1.20:8000"
+    
     @IBAction func backPushed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -44,7 +46,8 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         let image = UIImagePNGRepresentation(imageView.image!)!
         let imageData = image.base64EncodedString(options: .lineLength64Characters)
 //        print(imageData)
-        let url = URL(string: "http://192.168.1.228:8000/uploadImage/")
+//        let url = URL(string: "http://192.168.1.228:8000/uploadImage/")
+        let url = URL(string: "\(SERVER_IP)/uploadImage/")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         var username:String=""
