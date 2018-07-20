@@ -11,7 +11,8 @@ import MapKit
 import CoreLocation
 
 class MapVC: UIViewController {
-    var SERVER_IP:String = "http://192.168.1.20:8000"
+//    var SERVER_IP:String = "http://192.168.1.20:8000"
+    var SERVER_IP:String = Server.IP
     
     var tableData:[NSDictionary]=[]
 

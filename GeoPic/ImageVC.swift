@@ -13,7 +13,8 @@ import CoreData
 
 class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    var SERVER_IP:String = "http://192.168.1.20:8000"
+//    var SERVER_IP:String = "http://192.168.1.20:8000"
+    var SERVER_IP:String = Server.IP
     
     @IBAction func backPushed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

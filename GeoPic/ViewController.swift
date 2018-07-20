@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var SERVER_IP:String = "http://192.168.1.20:8000"
+//    var SERVER_IP:String = "http://192.168.1.20:8000"
+    var SERVER_IP:String = Server.IP
     @IBOutlet weak var UsernameLabel: UITextField!
     @IBOutlet weak var PasswordLabel: UITextField!
     

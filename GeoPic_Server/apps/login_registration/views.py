@@ -106,7 +106,6 @@ def fetchAll(request):
     data={
         'posts':list(posts)
     }
-    # print(posts)
     return JsonResponse(data)
     
 @csrf_exempt 
@@ -114,4 +113,11 @@ def searchPosts(request):
     if request.method!='POST':
         return HttpResponse('You are not posting!')
     print(request.POST)
-    return JsonResponse({'response':'We recieved your request'})
+    output=[]
+    for post in Post.objects.all():
+        postString = post.first_name + " " + post.last_name + " " + post.username + " " + post.location
+        postString = postString.lower()
+        if request.POST["searchFor"] in postString:
+            output.append({'id':post.id, 'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at})
+
+    return JsonResponse({'posts':output})

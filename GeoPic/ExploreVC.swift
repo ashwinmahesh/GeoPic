@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class ExploreVC: UIViewController {
-    var SERVER_IP:String = "http://192.168.1.20:8000"
+//    var SERVER_IP:String = "http://192.168.1.20:8000"
+    var SERVER_IP:String = Server.IP
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

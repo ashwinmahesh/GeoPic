@@ -10,7 +10,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    var SERVER_IP:String = "http://192.168.1.20:8000"
+//    var SERVER_IP:String = "http://192.168.1.20:8000"
+    var SERVER_IP:String = Server.IP
     
     var tableData:[NSDictionary]=[]
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,6 +20,7 @@ class SearchVC: UIViewController {
         performSegue(withIdentifier: "SearchToExploreSegue", sender: "SearchToExplore")
     }
     @IBAction func goPushed(_ sender: UIButton) {
+        textField.resignFirstResponder()
         if textField.text!.count>0{
             searchRecent(searchKey: textField.text!)
         }
@@ -44,7 +46,9 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
+        textField.autocorrectionType = .no
+//        LINE BELOW IS CAUSING ERROR WITH NOT BEING ABLE TO ACCESS PHOTO
+//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         fetchRecent()
         // Do any additional setup after loading the view.
     }
@@ -62,7 +66,11 @@ class SearchVC: UIViewController {
             data, response, error in
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print(jsonResult)
+                    let posts = jsonResult["posts"] as! NSMutableArray
+                    for post in posts{
+                        let postFixed = post as! NSDictionary
+                        self.tableData.append(postFixed)
+                    }
                     
                     DispatchQueue.main.async{
                         self.collectionView.reloadData()
