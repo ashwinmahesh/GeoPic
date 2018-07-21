@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SinglePostVC: UIViewController {
 //    var SERVER_IP:String = "http://192.168.1.20:8000"
@@ -35,6 +36,7 @@ class SinglePostVC: UIViewController {
         super.viewDidLoad()
         backButton.layer.cornerRadius=6
         getPost()
+        getImage()
         // Do any additional setup after loading the view.
     }
 
@@ -66,6 +68,24 @@ class SinglePostVC: UIViewController {
                             self.dateLabel.text = jsonResult["created_at"] as! String
                         }
 //                    }
+                }
+            }
+            catch{
+                
+            }
+        }
+        task.resume()
+    }
+    
+    func getImage(){
+        let url = URL(string: "\(SERVER_IP)/getPostAlamo/\(postId!)")
+        var request = URLRequest(url:url!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!){ data,response, error in
+            do{
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
+                    print("We recieved data")
+//                    let image_data = jsonResult["image_data"] as! base
                 }
             }
             catch{

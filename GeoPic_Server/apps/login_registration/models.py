@@ -11,6 +11,7 @@ class User(models.Model):
 
 class Post(models.Model):
     # image = models.TextField()
+    imagePath = models.CharField(max_length=255, default = "")
     first_name=models.CharField(max_length=255)
     last_name=models.CharField(max_length=255)
     username=models.CharField(max_length=255)

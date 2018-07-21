@@ -98,14 +98,15 @@ def uploadImage(request):
     latitude = request.POST['lat']
     longitude = request.POST['long']
     image_name = request.POST['image_name']
+    image_path = "Images/"+image_name+'_'+str(user.upload_count)+'.jpg'
 
-    with open('Images/'+image_name+'_'+str(user.upload_count)+'.jpg', 'wb+') as destination:
+    with open(image_path, 'wb+') as destination:
         for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
     # image_data_raw.replace('\n','')
     user.upload_count+=1
     user.save()
-    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description)
+    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description, imagePath = image_path)
     return JsonResponse({'response':'upload recieved'})
 
 @csrf_exempt
@@ -147,3 +148,12 @@ def alamoDataUpload(request):
     #     print(key)
     # imageData_raw = base64.b64decode(request.POST)
     return JsonResponse({'response':'We have recieved your file!'})
+
+@csrf_exempt
+def getPostAlamo(request, post_id):
+    print("You are asking for post with id: "+post_id)
+    if len(Post.objects.filter(id=post_id))==0:
+        return JsonResponse({'response':'This post does not exist'})
+    image_path = Post.objects.get(id=post_id).imagePath
+
+    return JsonResponse({'image_data':data})
