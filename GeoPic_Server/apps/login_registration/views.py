@@ -92,13 +92,19 @@ def uploadImage(request):
         return HttpResponse('You are not posting')
 
     user = User.objects.get(username=request.POST['username'])
-    user.upload_count+=1
-    user.save()
+    
     description = request.POST['description']
     location = request.POST['location']
     latitude = request.POST['lat']
     longitude = request.POST['long']
+    image_name = request.POST['image_name']
+
+    with open('Images/'+image_name+'_'+str(user.upload_count)+'.jpg', 'wb+') as destination:
+        for chunk in request.FILES['image'].chunks():
+            destination.write(chunk)
     # image_data_raw.replace('\n','')
+    user.upload_count+=1
+    user.save()
     Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description)
     return JsonResponse({'response':'upload recieved'})
 
@@ -134,7 +140,7 @@ def alamoDataUpload(request):
         return HttpResponse("You are not posting!")
     print(request.FILES)
     print(request.POST)
-    with open('Files/image.jpg', 'wb+') as destination:
+    with open('Images/image.jpg', 'wb+') as destination:
         for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
     # for key in request.POST:

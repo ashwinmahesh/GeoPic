@@ -66,14 +66,14 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.2)!
         
-        let parameters = ["username":username, "lat":myLatitude, "long":myLongitude, "location":locationLabel.text!, "description":descriptionTextView.text!, "image_name":"\(username)_\(count)"]
+        let parameters = ["username":username, "lat":myLatitude, "long":myLongitude, "location":locationLabel.text!, "description":descriptionTextView.text!, "image_name":"\(username)"]
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData, withName: "image", fileName:"\(username)_\(count)", mimeType:"image/jpg")
+            multipartFormData.append(imageData, withName: "image", fileName:"\(username)", mimeType:"image/jpg")
             for (key, value) in parameters{
                 multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
-        }, to: "\(SERVER_IP)/alamoDataUpload/") { (result) in
+        }, to: "\(SERVER_IP)/uploadImage/") { (result) in
             switch result{
             case .success (let upload, _, _):
                 upload.responseJSON{
