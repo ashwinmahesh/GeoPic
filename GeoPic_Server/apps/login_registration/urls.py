@@ -14,5 +14,6 @@ urlpatterns=[
     url(r'^searchPosts/$', views.searchPosts),
     url(r'^alamoTest/$', views.alamoTest),
     url(r'^alamoDataUpload/$', views.alamoDataUpload),
-    url(r'^getPostAlamo/(?P<post_id>\d+)/$', views.getPostAlamo)
+    url(r'^getPostAlamo/(?P<post_id>\d+)/$', views.getPostAlamo),
+    url(r'^viewPicture/$', views.viewPicture)
 ]

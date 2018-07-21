@@ -98,8 +98,8 @@ def uploadImage(request):
     latitude = request.POST['lat']
     longitude = request.POST['long']
     image_name = request.POST['image_name']
-    image_path = "Images/"+image_name+'_'+str(user.upload_count)+'.jpg'
-
+    # image_path = "Images/"+image_name+'_'+str(user.upload_count)+'.jpg'
+    image_path ="static/login_registration/images/"+image_name+'_'+str(user.upload_count)+'.jpg'
     with open(image_path, 'wb+') as destination:
         for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
@@ -156,4 +156,7 @@ def getPostAlamo(request, post_id):
         return JsonResponse({'response':'This post does not exist'})
     image_path = Post.objects.get(id=post_id).imagePath
 
-    return JsonResponse({'image_data':data})
+    return JsonResponse({'image_data':"We no image data for you right now"})
+
+def viewPicture(request):
+    return render(request, 'login_registration/picture.html')
