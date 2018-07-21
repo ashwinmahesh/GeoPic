@@ -47,12 +47,14 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         }
         
         var username:String=""
+        var count:Int16=0
         //Get user info
         let coreRequest:NSFetchRequest<User>=User.fetchRequest()
         do{
             let result = try context.fetch(coreRequest).first
             if let user = result{
                 username = user.username!
+                count = user.upload_count
                 user.upload_count+=1
                 appDelegate.saveContext()
             }
@@ -62,11 +64,27 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
         }
         //End of get user info
         
-        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.2)
-//        Alamofire.upload(multipartFormData: { (multipartFormData) in
-////            multipartFormData.append(imageData, withName: "image",)
-//        }, to: <#T##URLConvertible#>, encodingCompletion: <#T##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##((SessionManager.MultipartFormDataEncodingResult) -> Void)?##(SessionManager.MultipartFormDataEncodingResult) -> Void#>)
-//        
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.2)!
+        
+        let parameters = ["username":username, "lat":myLatitude, "long":myLongitude, "location":locationLabel.text!, "description":descriptionTextView.text!, "image_name":"\(username)_\(count)"]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(imageData, withName: "image", fileName:"\(username)_\(count)", mimeType:"image/jpg")
+            for (key, value) in parameters{
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: "\(SERVER_IP)/alamoDataUpload/") { (result) in
+            switch result{
+            case .success (let upload, _, _):
+                upload.responseJSON{
+                    response in
+                    print(response.result.value)
+                }
+            case .failure(let encodingError):
+                print(encodingError)
+            }
+        }
+//
         performSegue(withIdentifier: "UploadToExploreSegue", sender: "UploadToExplore")
     }
 //    Choose from photo library

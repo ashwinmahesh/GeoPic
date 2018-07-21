@@ -40,7 +40,7 @@ class AlamofireTestVC: UIViewController {
         
         let imageData = UIImageJPEGRepresentation(image, 0.2)!
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData, withName:"imageset", fileName:"image.jpg", mimeType:"image/jpg")
+            multipartFormData.append(imageData, withName:"image", fileName:"image.jpg", mimeType:"image/jpg")
         }, to: "\(SERVER_IP)/alamoDataUpload/") { (result) in
             switch result{
                 case .success (let upload, _, _):

@@ -90,11 +90,10 @@ def processUpload(request):
 def uploadImage(request):
     if request.method!='POST':
         return HttpResponse('You are not posting')
-    print(request.POST['username'])
+
     user = User.objects.get(username=request.POST['username'])
     user.upload_count+=1
     user.save()
-    image_data_raw = request.POST['image_data']
     description = request.POST['description']
     location = request.POST['location']
     latitude = request.POST['lat']
@@ -134,8 +133,9 @@ def alamoDataUpload(request):
         print("Someone isn't posting")
         return HttpResponse("You are not posting!")
     print(request.FILES)
+    print(request.POST)
     with open('Files/image.jpg', 'wb+') as destination:
-        for chunk in request.FILES['imageset'].chunks():
+        for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
     # for key in request.POST:
     #     print(key)
