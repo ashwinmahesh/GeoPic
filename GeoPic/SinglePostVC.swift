@@ -37,13 +37,10 @@ class SinglePostVC: UIViewController {
         super.viewDidLoad()
         backButton.layer.cornerRadius=6
         getPost()
-//        getImage()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func getPost(){
@@ -58,19 +55,15 @@ class SinglePostVC: UIViewController {
             do{
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
                     print(jsonResult)
-//                    let imageData = jsonResult["image_data"] as! String
-//                    if let decodedData = Data(base64Encoded: imageData, options: .ignoreUnknownCharacters){
-//                        let decodedImage:UIImage = UIImage(data: decodedData)!
-                        DispatchQueue.main.async {
-                            self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
-                            self.addressLabel.text = (jsonResult["location"] as! String)
-                            self.descriptionView.text = (jsonResult["description"] as! String)
+                    DispatchQueue.main.async {
+                        self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
+                        self.addressLabel.text = (jsonResult["location"] as! String)
+                        self.descriptionView.text = (jsonResult["description"] as! String)
 //                            self.imageView.image = UIImage(named: "sample picture")
-                            self.dateLabel.text = jsonResult["created_at"] as! String
-                            let this_imagePath = jsonResult["image_path"] as! String
-                            self.getImage(imagePath: this_imagePath)
-                        }
-//                    }
+                        self.dateLabel.text = jsonResult["created_at"] as! String
+                        let this_imagePath = jsonResult["image_path"] as! String
+                        self.getImage(imagePath: this_imagePath)
+                    }
                 }
             }
             catch{
@@ -88,14 +81,6 @@ class SinglePostVC: UIViewController {
                 self.imageView.image = image
             }
         }
-//        Alamofire.download("\(SERVER_IP)/static/login_registration/images/hackerman.png").responseData { response in
-//            print(response)
-////            if let data = response.result.value {
-////                print("Getting data")
-////                let image = UIImage(data: data)
-////                self.imageView.image = image
-////            }
-//        }
     }
     
 

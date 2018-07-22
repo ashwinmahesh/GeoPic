@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 class ExploreVC: UIViewController {
 //    var SERVER_IP:String = "http://192.168.1.20:8000"
@@ -109,7 +110,18 @@ extension ExploreVC:UITableViewDelegate, UITableViewDataSource{
         cell.nameLabel.text=(currentPost["first_name"] as! String) + " " + (currentPost["last_name"] as! String)
         cell.addressLabel.text=currentPost["location"] as! String
         cell.descriptionView.text=currentPost["description"] as! String
-        cell.pictureView.image = UIImage(named: "sample picture")
+        
+        //Adding in image stuff here
+        let imagePath = currentPost["imagePath"]!
+        Alamofire.request("\(SERVER_IP)/static/login_registration/images/\(imagePath)").responseData { (response) in
+            if let data = response.data{
+                let image = UIImage(data: data)
+                cell.pictureView.image = image
+            }
+        }
+        
+        //END OF IMAGE STUFF
+//        cell.pictureView.image = UIImage(named: "sample picture")
         cell.dateLabel.text=currentPost["created_at"] as! String
         return cell
     }

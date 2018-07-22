@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchVC: UIViewController {
     
@@ -123,7 +124,17 @@ extension SearchVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as! SearchCell
         cell.post_id = tableData[indexPath.row]["id"] as! Int
-        cell.imageView.image = UIImage(named: "sample picture")
+        //Starting image code here
+        let imagePath = tableData[indexPath.row]["imagePath"] as! String
+        Alamofire.request("\(SERVER_IP)/static/login_registration/images/\(imagePath)").responseData { (response) in
+            if let data = response.data{
+                let image = UIImage(data: data)
+                cell.imageView.image = image
+            }
+        }
+        //End of image Code
+        
+//        cell.imageView.image = UIImage(named: "sample picture")
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
