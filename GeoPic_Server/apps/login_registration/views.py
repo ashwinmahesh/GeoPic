@@ -70,7 +70,7 @@ def getPost(request):
     post = Post.objects.get(id=post_id)
     # image_data_raw = post.image
     # image_data=image_data_raw.replace('\n', '').replace('\r', '').replace(' ', '')
-    response = {'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at}
+    response = {'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at, 'image_path':post.imagePath}
     return JsonResponse(response)
 
 def uploadFile(request):
@@ -99,14 +99,14 @@ def uploadImage(request):
     longitude = request.POST['long']
     image_name = request.POST['image_name']
     # image_path = "Images/"+image_name+'_'+str(user.upload_count)+'.jpg'
-    image_path ="static/login_registration/images/"+image_name+'_'+str(user.upload_count)+'.jpg'
+    image_path ="apps/login_registration/static/login_registration/images/"+image_name+'_'+str(user.upload_count)+'.jpg'
     with open(image_path, 'wb+') as destination:
         for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
     # image_data_raw.replace('\n','')
     user.upload_count+=1
     user.save()
-    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description, imagePath = image_path)
+    Post.objects.create(first_name=user.first_name, last_name=user.last_name, username=user.username, longitude=longitude, latitude=latitude, location=location, description=description, imagePath = image_name+'_'+str(user.upload_count-1)+'.jpg')
     return JsonResponse({'response':'upload recieved'})
 
 @csrf_exempt
@@ -154,7 +154,7 @@ def getPostAlamo(request, post_id):
     print("You are asking for post with id: "+post_id)
     if len(Post.objects.filter(id=post_id))==0:
         return JsonResponse({'response':'This post does not exist'})
-    image_path = Post.objects.get(id=post_id).imagePath
+    image_path = Post.objects.get(id=post_id).imagePatxh
 
     return JsonResponse({'image_data':"We no image data for you right now"})
 

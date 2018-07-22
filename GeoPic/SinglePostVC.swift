@@ -14,6 +14,7 @@ class SinglePostVC: UIViewController {
     var SERVER_IP:String = Server.IP
 
     var postId:Int?
+    var imagePath:String?
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -36,7 +37,7 @@ class SinglePostVC: UIViewController {
         super.viewDidLoad()
         backButton.layer.cornerRadius=6
         getPost()
-        getImage()
+//        getImage()
         // Do any additional setup after loading the view.
     }
 
@@ -66,6 +67,8 @@ class SinglePostVC: UIViewController {
                             self.descriptionView.text = (jsonResult["description"] as! String)
 //                            self.imageView.image = UIImage(named: "sample picture")
                             self.dateLabel.text = jsonResult["created_at"] as! String
+                            let this_imagePath = jsonResult["image_path"] as! String
+                            self.getImage(imagePath: this_imagePath)
                         }
 //                    }
                 }
@@ -77,8 +80,8 @@ class SinglePostVC: UIViewController {
         task.resume()
     }
     
-    func getImage(){
-        Alamofire.request("\(SERVER_IP)/static/login_registration/images/hackerman.png").responseData { (response) in
+    func getImage(imagePath:String){
+        Alamofire.request("\(SERVER_IP)/static/login_registration/images/\(imagePath)").responseData { (response) in
             if let data = response.data{
                 print("Getting data")
                 let image = UIImage(data: data)
