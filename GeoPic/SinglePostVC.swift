@@ -64,7 +64,7 @@ class SinglePostVC: UIViewController {
                             self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
                             self.addressLabel.text = (jsonResult["location"] as! String)
                             self.descriptionView.text = (jsonResult["description"] as! String)
-                            self.imageView.image = UIImage(named: "sample picture")
+//                            self.imageView.image = UIImage(named: "sample picture")
                             self.dateLabel.text = jsonResult["created_at"] as! String
                         }
 //                    }
@@ -78,21 +78,21 @@ class SinglePostVC: UIViewController {
     }
     
     func getImage(){
-        let url = URL(string: "\(SERVER_IP)/getPostAlamo/\(postId!)")
-        var request = URLRequest(url:url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!){ data,response, error in
-            do{
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary{
-                    print("We recieved data")
-//                    let image_data = jsonResult["image_data"] as! base
-                }
-            }
-            catch{
-                
+        Alamofire.request("\(SERVER_IP)/static/login_registration/images/hackerman.png").responseData { (response) in
+            if let data = response.data{
+                print("Getting data")
+                let image = UIImage(data: data)
+                self.imageView.image = image
             }
         }
-        task.resume()
+//        Alamofire.download("\(SERVER_IP)/static/login_registration/images/hackerman.png").responseData { response in
+//            print(response)
+////            if let data = response.result.value {
+////                print("Getting data")
+////                let image = UIImage(data: data)
+////                self.imageView.image = image
+////            }
+//        }
     }
     
 
