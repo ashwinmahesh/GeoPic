@@ -144,7 +144,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkG-mq-rvA">
                                 <rect key="frame" x="42.5" y="435" width="235" height="46"/>
@@ -200,7 +200,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.18822005391120911" green="0.18824669718742371" blue="0.18820810317993164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -271,7 +271,4 @@
     <resources>
         <image name="location" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="kOa-wc-rhC"/>
-    </inferredMetricsTieBreakers>
 </document>
