@@ -10,9 +10,9 @@ import Foundation
 
 class Server{
     //Home
-//    static var IP = "http://192.168.1.20:8000"
+    static var IP = "http://192.168.1.20:8000"
     //CodingDojo
 //    static var IP = "http://192.168.1.228:8000"
     //Public
-    static var IP = "http://52.14.254.242"
+//    static var IP = "http://52.14.254.242"
 }

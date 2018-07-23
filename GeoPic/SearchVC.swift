@@ -82,6 +82,7 @@ class SearchVC: UIViewController {
                 print(error)
             }
         })
+        print("Finishing task")
         task.resume()
     }
     

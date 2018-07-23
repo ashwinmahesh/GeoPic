@@ -127,7 +127,7 @@ def searchPosts(request):
         postString = post.first_name + " " + post.last_name + " " + post.username + " " + post.location
         postString = postString.lower()
         if request.POST["searchFor"] in postString:
-            output.append({'id':post.id, 'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at})
+            output.append({'id':post.id, 'first_name':post.first_name, 'last_name':post.last_name, 'latitude':post.latitude, 'longitude':post.longitude, 'location':post.location, 'description':post.description, 'created_at':post.created_at, 'imagePath':post.imagePath})
 
     return JsonResponse({'posts':output})
 
