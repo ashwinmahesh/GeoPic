@@ -121,8 +121,34 @@ extension ExploreVC:UITableViewDelegate, UITableViewDataSource{
         }
         
         //END OF IMAGE STUFF
-//        cell.pictureView.image = UIImage(named: "sample picture")
-        cell.dateLabel.text=currentPost["created_at"] as! String
+//        let year = (currentPost["created_at"] as! String)[0...3]
+//        let month = (currentPost["created_at"] as! String)[5...6]
+        
+        //Making date modifications here
+        let created_at = currentPost["created_at"] as! String
+        let yearIndex = created_at.index(created_at.startIndex, offsetBy: 0)...created_at.index(created_at.startIndex, offsetBy:3)
+        let monthIndex = created_at.index(created_at.startIndex, offsetBy:5)...created_at.index(created_at.startIndex, offsetBy:6)
+        let dayIndex = created_at.index(created_at.startIndex, offsetBy:8)...created_at.index(created_at.startIndex, offsetBy:9)
+        let hourIndex = created_at.index(created_at.startIndex, offsetBy:11)...created_at.index(created_at.startIndex, offsetBy:12)
+        let minuteIndex = created_at.index(created_at.startIndex, offsetBy:14)...created_at.index(created_at.startIndex, offsetBy:15)
+        
+        let year = created_at[yearIndex]
+        let month = created_at[monthIndex]
+        let day = created_at[dayIndex]
+        
+        let hour = String(Int(created_at[hourIndex])! % 12)
+        var AmPm = ""
+        if Int(created_at[hourIndex])! / 12 == 0{
+            AmPm = "AM"
+        }
+        else{
+            AmPm = "PM"
+        }
+        let minute = created_at[minuteIndex]
+        //End of date modification
+        
+//        cell.dateLabel.text=currentPost["created_at"] as! String
+        cell.dateLabel.text = "\(month)/\(day)/\(year) at \(hour):\(minute) \(AmPm)"
         return cell
     }
 }

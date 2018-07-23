@@ -145,8 +145,14 @@
                                                         <constraint firstAttribute="height" constant="270" id="tJX-bm-OM5"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/16/1998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwA-d1-ss4">
+                                                    <rect key="frame" x="15" y="341" width="345" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.82806792240000004" green="0.79612978909999998" blue="0.8200833891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhR-bc-LnL">
-                                                    <rect key="frame" x="15" y="452" width="345" height="90"/>
+                                                    <rect key="frame" x="15" y="369" width="345" height="90"/>
                                                     <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="f7m-r6-JT1"/>
@@ -156,24 +162,18 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/16/1998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwA-d1-ss4">
-                                                    <rect key="frame" x="15" y="341" width="345" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.82806792240000004" green="0.79612978909999998" blue="0.8200833891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="oTv-Hd-NjQ" firstAttribute="leading" secondItem="E1a-AE-4b9" secondAttribute="leadingMargin" id="0F6-iT-Gxa"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nwA-d1-ss4" secondAttribute="trailing" id="8Yl-SQ-WjK"/>
+                                                <constraint firstItem="WhR-bc-LnL" firstAttribute="top" secondItem="nwA-d1-ss4" secondAttribute="bottom" constant="8" id="Adf-eh-ZYR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="oTv-Hd-NjQ" secondAttribute="trailing" id="H7r-1F-xNk"/>
                                                 <constraint firstItem="WhR-bc-LnL" firstAttribute="leading" secondItem="E1a-AE-4b9" secondAttribute="leadingMargin" id="ND6-VT-5f0"/>
                                                 <constraint firstItem="2S6-OR-XEL" firstAttribute="top" secondItem="oTv-Hd-NjQ" secondAttribute="bottom" constant="1" id="OtA-H2-Q5X"/>
                                                 <constraint firstAttribute="trailing" secondItem="bsc-2R-vIt" secondAttribute="trailing" id="PHX-Ea-89U"/>
                                                 <constraint firstItem="bsc-2R-vIt" firstAttribute="top" secondItem="2S6-OR-XEL" secondAttribute="bottom" constant="8" id="Ppa-4X-HZi"/>
                                                 <constraint firstItem="2S6-OR-XEL" firstAttribute="leading" secondItem="E1a-AE-4b9" secondAttribute="leadingMargin" id="Qwt-ia-7e3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="WhR-bc-LnL" secondAttribute="bottom" constant="8" id="UOO-B5-F6j"/>
                                                 <constraint firstItem="nwA-d1-ss4" firstAttribute="leading" secondItem="E1a-AE-4b9" secondAttribute="leadingMargin" id="V4Q-6s-BGd"/>
                                                 <constraint firstItem="oTv-Hd-NjQ" firstAttribute="top" secondItem="E1a-AE-4b9" secondAttribute="topMargin" id="WWG-Ph-ASc"/>
                                                 <constraint firstItem="bsc-2R-vIt" firstAttribute="leading" secondItem="E1a-AE-4b9" secondAttribute="leading" id="ZI4-2F-2Vu"/>

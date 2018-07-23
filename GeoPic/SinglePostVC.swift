@@ -59,8 +59,32 @@ class SinglePostVC: UIViewController {
                         self.nameLabel.text = (jsonResult["first_name"] as! String) + " " + (jsonResult["last_name"] as! String)
                         self.addressLabel.text = (jsonResult["location"] as! String)
                         self.descriptionView.text = (jsonResult["description"] as! String)
-//                            self.imageView.image = UIImage(named: "sample picture")
-                        self.dateLabel.text = jsonResult["created_at"] as! String
+
+                        //Starting date modifications here
+                        let created_at = jsonResult["created_at"] as! String
+                        let yearIndex = created_at.index(created_at.startIndex, offsetBy: 0)...created_at.index(created_at.startIndex, offsetBy:3)
+                        let monthIndex = created_at.index(created_at.startIndex, offsetBy:5)...created_at.index(created_at.startIndex, offsetBy:6)
+                        let dayIndex = created_at.index(created_at.startIndex, offsetBy:8)...created_at.index(created_at.startIndex, offsetBy:9)
+                        let hourIndex = created_at.index(created_at.startIndex, offsetBy:11)...created_at.index(created_at.startIndex, offsetBy:12)
+                        let minuteIndex = created_at.index(created_at.startIndex, offsetBy:14)...created_at.index(created_at.startIndex, offsetBy:15)
+                        
+                        let year = created_at[yearIndex]
+                        let month = created_at[monthIndex]
+                        let day = created_at[dayIndex]
+                        
+                        let hour = String(Int(created_at[hourIndex])! % 12)
+                        var AmPm = ""
+                        if Int(created_at[hourIndex])! / 12 == 0{
+                            AmPm = "AM"
+                        }
+                        else{
+                            AmPm = "PM"
+                        }
+                        let minute = created_at[minuteIndex]
+                        //End of date modification
+                        
+//                        self.dateLabel.text = jsonResult["created_at"] as! String
+                        self.dateLabel.text = "\(month)/\(day)/\(year) at \(hour):\(minute) \(AmPm)"
                         let this_imagePath = jsonResult["image_path"] as! String
                         self.getImage(imagePath: this_imagePath)
                     }

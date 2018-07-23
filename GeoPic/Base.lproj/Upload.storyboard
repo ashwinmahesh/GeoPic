@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rno-0u-odW">
-                                <rect key="frame" x="16" y="292" width="160" height="45"/>
+                                <rect key="frame" x="92.666666666666686" y="292" width="190" height="45"/>
                                 <color key="backgroundColor" red="0.36064718130000001" green="0.64431939770000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="47N-nS-9IY"/>
                                     <constraint firstAttribute="height" constant="45" id="67e-YL-z7d"/>
+                                    <constraint firstAttribute="width" constant="190" id="nXY-KN-xPv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Choose Picture">
@@ -31,21 +31,6 @@
                                 </state>
                                 <connections>
                                     <action selector="importPressed:" destination="hdm-kh-7bM" eventType="touchUpInside" id="3sx-kp-OhM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1D-Er-wqF">
-                                <rect key="frame" x="199" y="292" width="160" height="45"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="bEu-kw-K6b"/>
-                                    <constraint firstAttribute="height" constant="45" id="zQ4-T7-xjP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Take Picture">
-                                    <color key="titleColor" red="0.36064718130000001" green="0.64431939770000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePicturePressed:" destination="hdm-kh-7bM" eventType="touchUpInside" id="aIK-Jm-m9E"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mYg-Tw-Qw8">
@@ -123,7 +108,6 @@
                         <color key="backgroundColor" red="0.20026967005076146" green="0.19055186847411429" blue="0.19660400562337901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="q85-3o-QHE" firstAttribute="top" secondItem="mYg-Tw-Qw8" secondAttribute="bottom" constant="8" id="13j-sW-bD7"/>
-                            <constraint firstItem="HgN-Bd-ZoY" firstAttribute="trailing" secondItem="D1D-Er-wqF" secondAttribute="trailing" constant="16" id="47K-pi-nxQ"/>
                             <constraint firstItem="h8e-PR-tqT" firstAttribute="top" secondItem="HgN-Bd-ZoY" secondAttribute="top" id="55P-Da-n0N"/>
                             <constraint firstItem="HgN-Bd-ZoY" firstAttribute="trailing" secondItem="q85-3o-QHE" secondAttribute="trailing" constant="16" id="8zy-c2-NE7"/>
                             <constraint firstItem="69x-td-ndN" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" constant="16" id="DOQ-yF-Edb"/>
@@ -131,14 +115,13 @@
                             <constraint firstItem="1fN-mH-3Qr" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" constant="16" id="Kkr-Yy-QcD"/>
                             <constraint firstItem="Rzq-8w-O1C" firstAttribute="centerX" secondItem="T4Q-wk-kPn" secondAttribute="centerX" id="Lao-X9-IwH"/>
                             <constraint firstItem="mYg-Tw-Qw8" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" constant="16" id="Ppx-nP-qu4"/>
-                            <constraint firstItem="Rno-0u-odW" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" constant="16" id="R83-9t-ydn"/>
                             <constraint firstItem="HgN-Bd-ZoY" firstAttribute="trailing" secondItem="69x-td-ndN" secondAttribute="trailing" constant="16" id="TQh-vk-no3"/>
                             <constraint firstItem="HgN-Bd-ZoY" firstAttribute="trailing" secondItem="mYg-Tw-Qw8" secondAttribute="trailing" constant="16" id="UA2-MY-W3C"/>
                             <constraint firstItem="1fN-mH-3Qr" firstAttribute="top" secondItem="Rno-0u-odW" secondAttribute="bottom" constant="8" id="WMv-O2-A0P"/>
                             <constraint firstAttribute="trailing" secondItem="h8e-PR-tqT" secondAttribute="trailing" id="WYi-t4-apN"/>
                             <constraint firstItem="q85-3o-QHE" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" constant="16" id="cDw-Lx-CNk"/>
+                            <constraint firstItem="Rno-0u-odW" firstAttribute="centerX" secondItem="T4Q-wk-kPn" secondAttribute="centerX" id="fb8-mX-dis"/>
                             <constraint firstItem="h8e-PR-tqT" firstAttribute="leading" secondItem="HgN-Bd-ZoY" secondAttribute="leading" id="fgr-fQ-Kay"/>
-                            <constraint firstItem="D1D-Er-wqF" firstAttribute="top" secondItem="69x-td-ndN" secondAttribute="bottom" constant="16" id="gLv-qd-t1X"/>
                             <constraint firstItem="Rzq-8w-O1C" firstAttribute="top" secondItem="q85-3o-QHE" secondAttribute="bottom" constant="8" id="ter-6r-fzB"/>
                             <constraint firstItem="Rno-0u-odW" firstAttribute="top" secondItem="69x-td-ndN" secondAttribute="bottom" constant="16" id="uPj-UO-3z8"/>
                             <constraint firstItem="69x-td-ndN" firstAttribute="top" secondItem="h8e-PR-tqT" secondAttribute="bottom" constant="8" id="y4O-YO-f1G"/>
@@ -151,14 +134,13 @@
                         <outlet property="locationLabel" destination="q85-3o-QHE" id="bgU-iS-9XW"/>
                         <outletCollection property="buttons" destination="ZAx-ct-MY0" collectionClass="NSMutableArray" id="yka-Fv-xQy"/>
                         <outletCollection property="buttons" destination="Rno-0u-odW" collectionClass="NSMutableArray" id="nzC-ng-Z6G"/>
-                        <outletCollection property="buttons" destination="D1D-Er-wqF" collectionClass="NSMutableArray" id="kl8-Ky-dTp"/>
                         <outletCollection property="buttons" destination="Rzq-8w-O1C" collectionClass="NSMutableArray" id="QNU-Dr-QXF"/>
                         <segue destination="RDZ-9L-Yem" kind="presentation" identifier="UploadToExploreSegue" id="5q2-Df-Rj4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBz-Se-vp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="104.7976011994003"/>
+            <point key="canvasLocation" x="628" y="104.1871921182266"/>
         </scene>
         <!--Explore-->
         <scene sceneID="yCe-Lm-cps">

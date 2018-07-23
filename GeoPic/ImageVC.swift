@@ -99,15 +99,15 @@ class ImageVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCo
     }
     
 //    Camera picture
-    @IBAction func takePicturePressed(_ sender: UIButton) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = .camera
-        image.allowsEditing = false
-        self.present(image, animated: true) {
-        }
-        image_chosen=true
-    }
+//    @IBAction func takePicturePressed(_ sender: UIButton) {
+//        let image = UIImagePickerController()
+//        image.delegate = self
+//        image.sourceType = .camera
+//        image.allowsEditing = false
+//        self.present(image, animated: true) {
+//        }
+//        image_chosen=true
+//    }
 //    Set picture
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
