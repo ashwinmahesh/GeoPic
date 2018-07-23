@@ -1,7 +1,4 @@
-IMPORTANT ADDRESSES
+HOW TO USE APP:
 
-Process Login Address:
-http://192.168.1.228:8000/processLogin/
-
-Process Register Address:
-http://192.168.1.228:8000/processRegister/
+1) Open IP_ADDRESS.swift
+2) Change IP to equal your local IP.
